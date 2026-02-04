@@ -1,168 +1,141 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { usePathname } from "next/navigation";
+import { Instagram, Sun, ArrowUp } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { sendMail } from "@/lib/send-mail";
-import { Checkbox } from "../ui/checkbox";
-import { Input } from "../ui/input";
-import { PhoneInput } from "../ui/phone-input";
+import Logo from "@/assets/logo.svg";
 import { PrivacyPolicyPopup } from "../ui/privacy-policy-popup";
 
-const formSchema = z.object({
-  name: z.string().nonempty(""),
-  phone: z
-    .string()
-    .transform((val) => val.replace(/-/g, ""))
-    .refine((val) => /^01\d{8,9}$/.test(val), {
-      message: "휴대폰 번호는 01로 시작하고 10자리 또는 11자리 숫자여야 해요.",
-    }),
-  agreed: z.boolean().refine((val) => val === true, {
-    message: "개인정보 수집 및 이용에 동의해주세요.",
-  }),
-});
-
-type FormSchemaType = z.infer<typeof formSchema>;
-
 export default function Footer() {
-  const pathname = usePathname();
   const [policyOpen, setPolicyOpen] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
-  const [errorMessage, setErrorMessage] = useState("");
 
-  const form = useForm<FormSchemaType>({
-    resolver: zodResolver(formSchema),
-    mode: "onChange",
-    defaultValues: {
-      name: "",
-      phone: "",
-      agreed: false,
-    },
-  });
-
-  const { formState } = form;
-  const { isDirty, isValid, isSubmitting } = formState;
-
-  if (pathname === "/contact") return null;
-
-  const onSubmit = async (data: FormSchemaType) => {
-    setSubmitStatus(null);
-    setErrorMessage("");
-
-    const result = await sendMail({ name: data.name, contact: data.phone });
-
-    if (result.success) {
-      setSubmitStatus("success");
-      form.reset();
-    } else {
-      setSubmitStatus("error");
-      setErrorMessage(result.error || "메일 전송에 실패했습니다.");
+  const handleScrollTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   return (
-    <footer className="w-full bg-stone-700 px-5 py-10 sm:px-6 md:px-8 md:py-16 lg:py-13">
-      <div className="mx-auto max-w-262.75">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-15">
-          {/* Title Section */}
-          <div className="shrink-0 text-left">
-            <h2 className="font-medium text-3xl text-[#BBBBBC] lg:text-[32px]">
-              <span className="hidden lg:block">
-                24시간
-                <br />
-                문의하기
-              </span>
+    <footer className="relative w-full overflow-hidden bg-[#232323] text-[#d0d0d0]">
+      <div
+        className="absolute inset-0 bg-[url('/home/about-bg.webp')] bg-cover bg-top opacity-30"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-[#232323]/90" aria-hidden="true" />
 
-              <span className="block lg:hidden">24시간 문의하기</span>
-            </h2>
+      <div className="relative mx-auto max-w-360 px-6 py-14 lg:px-24 lg:py-16">
+        <div className="border-white/10 border-b pb-10">
+          <Image src={Logo} alt="STAY-G" width={95} height={24} className="mb-6 h-6 w-auto" />
+
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1fr_1.4fr] lg:gap-12">
+            <div className="space-y-3">
+              <p className="font-semibold text-sm tracking-[0.2em] text-[#d0d0d0]">ABOUT</p>
+              <p className="max-w-sm text-[#999999] text-sm leading-relaxed">
+                효율성과 전문성의 새로운 패러다임, 생활숙박시설 위탁운영사 스테이지
+              </p>
+              <div className="inline-flex items-center gap-2 text-[#cfcfcf]">
+                <Sun size={16} />
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <p className="font-semibold text-sm tracking-[0.2em] text-[#d0d0d0]">CONTACT</p>
+              <div className="space-y-1 text-[#999999] text-sm">
+                <p>010-5172-7060</p>
+                <a href="mailto:kevin7060@naver.com" className="transition-colors hover:text-white">
+                  kevin7060@naver.com
+                </a>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <p className="font-semibold text-sm tracking-[0.2em] text-[#d0d0d0]">
+                COMPANY INFO
+              </p>
+              <div className="space-y-2 text-[#999999] text-sm leading-relaxed">
+                <div className="flex flex-wrap gap-x-2 gap-y-1">
+                  <span className="opacity-70">주소:</span>
+                  <span>서울특별시 금천구 가산동 319-8 에이스하이엔드타워 11층 1107호</span>
+                </div>
+                <div className="flex flex-wrap gap-x-2 gap-y-1">
+                  <span className="opacity-70">상호:</span>
+                  <span>(주) 스테이지 STAY-G Inc.</span>
+                </div>
+                <div className="flex flex-wrap gap-x-2 gap-y-1">
+                  <span className="opacity-70">사업자 등록번호:</span>
+                  <span>268-88-03334</span>
+                </div>
+                <div className="flex flex-wrap gap-x-2 gap-y-1">
+                  <span className="opacity-70">대표번호:</span>
+                  <span>0507-1465-7060</span>
+                </div>
+                <div className="flex flex-wrap gap-x-3 text-sm">
+                  <button
+                    type="button"
+                    className="transition-colors hover:text-white"
+                    onClick={() => setPolicyOpen(true)}
+                  >
+                    개인정보처리방침
+                  </button>
+                  <span className="opacity-30">|</span>
+                  <span>이메일무단수집거부</span>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-3 pt-2">
+                <a
+                  href="/uploads/2024/11/%EC%A3%BC%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%A7%80_%ED%9A%8C%EC%82%AC%EC%86%8C%EA%B0%9C%EC%84%9C.pdf"
+                  className="rounded border border-white/50 px-5 py-2 font-semibold text-xs text-white uppercase transition-colors hover:border-white"
+                >
+                  회사소개서 다운로드
+                </a>
+                <a
+                  href="/uploads/2024/11/stay-g_company.pdf"
+                  className="rounded border border-white/50 px-5 py-2 font-semibold text-xs text-white uppercase transition-colors hover:border-white"
+                >
+                  COMPANY PROFILE
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-start justify-between gap-6 pt-6 text-[#7d7d7d] text-xs md:flex-row md:items-center">
+          <div className="flex flex-wrap items-center gap-2">
+            <span>COPYRIGHT © 2024</span>
+            <strong className="text-[#cacaca]">STAY-G</strong>
+            <strong>INC.</strong>
+            <strong>ALL RIGHTS RESERVED.</strong>
           </div>
 
-          {/* Form Section */}
-          <div className="w-full flex-1">
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4.5">
-              {/* Input Fields Row */}
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]">
-                {/* Name Input */}
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="font-medium text-white">
-                    성함
-                  </label>
-                  <Input
-                    id="name"
-                    type="text"
-                    placeholder="성함을 입력해주세요."
-                    {...form.register("name")}
-                    aria-invalid={!!form.formState.errors.name}
-                    aria-describedby="name-error"
-                  />
-                </div>
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3">
+              <Link href="https://blog.naver.com/stay-g-inc" aria-label="STAY-G Blog">
+                <Image
+                  src="/uploads/2024/11/bligic.png"
+                  alt="Naver Blog"
+                  width={24}
+                  height={24}
+                  className="h-6 w-6"
+                />
+              </Link>
+              <Link href="https://www.instagram.com/stay_g.kr/" aria-label="STAY-G Instagram">
+                <Instagram size={20} className="text-white" />
+              </Link>
+            </div>
 
-                {/* Phone Input */}
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="phone" className="font-medium text-white">
-                    전화번호
-                  </label>
-                  {/* Controlled input for phone with masking */}
-                  <PhoneInput
-                    id="phone"
-                    value={form.watch("phone")}
-                    onChange={(value) => form.setValue("phone", value)}
-                    placeholder="010-0000-0000"
-                    aria-invalid={!!form.formState.errors.phone}
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <div className="flex items-end sm:col-span-2 lg:col-span-1">
-                  <button
-                    type="submit"
-                    className="h-12 w-full cursor-pointer bg-white font-bold text-black text-sm transition-opacity disabled:cursor-not-allowed lg:w-45"
-                    disabled={!(isDirty && isValid) || isSubmitting}
-                  >
-                    {isSubmitting ? "전송 중..." : "온라인 문의 제출하기"}
-                  </button>
-                </div>
-              </div>
-
-              {/* Checkbox & Privacy Agreement */}
-              <div>
-                <div className="flex flex-col gap-2 sm:gap-3">
-                  <Checkbox
-                    id="agreed"
-                    label="개인정보 수집 및 이용에 동의합니다."
-                    error={!!form.formState.errors.agreed}
-                    {...form.register("agreed")}
-                    aria-invalid={!!form.formState.errors.agreed}
-                    aria-describedby="agreed-error"
-                  />
-
-                  <p className="font-light text-white text-xs">
-                    개인정보는 본사의 상담 용도 외에 다른 목적으로는 노출이 되지 않으며 별도의
-                    계약이 이루어지지 않는다면 즉시 파기 됩니다.{" "}
-                    <button
-                      type="button"
-                      className="cursor-pointer underline underline-offset-2"
-                      onClick={() => setPolicyOpen(true)}
-                    >
-                      개인정보처리방침
-                    </button>
-                    을 참고 하시기 바랍니다.
-                  </p>
-                </div>
-              </div>
-            </form>
-
-            {submitStatus === "success" && (
-              <p className="mt-3 text-green-400 text-sm">문의가 성공적으로 전송되었습니다.</p>
-            )}
-            {submitStatus === "error" && (
-              <p className="mt-3 text-red-400 text-sm">{errorMessage}</p>
-            )}
+            <button
+              type="button"
+              onClick={handleScrollTop}
+              className="flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-[#b3b3b3] transition-colors hover:text-white"
+            >
+              TOP <ArrowUp size={14} />
+            </button>
           </div>
         </div>
       </div>
+
       <PrivacyPolicyPopup open={policyOpen} onClose={() => setPolicyOpen(false)} />
     </footer>
   );
