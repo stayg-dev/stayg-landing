@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+:root {
+  --background: #111;
+  --foreground: #171717;
+  --primary: #e1ad00;
+
+    /* Logo gradient */
+  --logo-gradient: linear-gradient(
+    270deg,
+    #BCBBBB -5.35%,
+    #858585 30.73%,
+    #5F5C57 50.16%
+  );
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --color-primary: var(--primary);
+  --gradient-logo: var(--logo-gradient);
+}
+
+body {
+  background: #fff;
+  color: var(--foreground);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+.text-logo-gradient {
+  background: var(--logo-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.border-logo-gradient {
+  border: 1px solid transparent;
+  border-image: linear-gradient(270deg, #BCBBBB -5.35%, #858585 30.73%, #5F5C57 50.16%) 1;
+}
+
+/* 조선일보 NM: body에 Next.js localFont가 --font-chosunilbo 변수를 설정함 */
+@layer utilities {
+  .font-chosunilbo {
+    font-family: var(--font-chosunilbo), "ChosunilboNM", sans-serif;
+  }
+}
+

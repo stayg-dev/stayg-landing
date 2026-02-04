@@ -1,0 +1,97 @@
+#root {
+  min-height: 100vh;
+}
+
+.legacy-page {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.legacy-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  background: transparent !important;
+  color: #ffffff;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    backdrop-filter 180ms ease;
+}
+
+.legacy-page {
+  position: relative;
+}
+
+.legacy-header:not(.scrolled) {
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.legacy-header:not(.scrolled) .custom-logo {
+  filter: brightness(0) invert(1);
+}
+
+.legacy-header:not(.scrolled),
+.legacy-header:not(.scrolled) *,
+.legacy-header:not(.scrolled) .wp-block-group,
+.legacy-header:not(.scrolled) .wp-block-group *,
+.legacy-header:not(.scrolled) .wp-block-navigation {
+  background: transparent !important;
+}
+
+.legacy-header:not(.scrolled)
+  .wp-block-navigation-item__label,
+.legacy-header:not(.scrolled)
+  .wp-block-navigation__submenu-container
+  a,
+.legacy-header:not(.scrolled) .wp-block-button__link,
+.legacy-header:not(.scrolled) .wp-block-site-logo a,
+.legacy-header:not(.scrolled) .wp-block-site-logo img,
+.legacy-header:not(.scrolled) .wp-block-site-logo svg,
+.legacy-header:not(.scrolled) .wp-block-search__button,
+.legacy-header:not(.scrolled) .wp-block-search__input {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.legacy-header.scrolled {
+  background: #ffffff !important;
+  color: #111111;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+.legacy-header.scrolled,
+.legacy-header.scrolled .wp-block-group,
+.legacy-header.scrolled .wp-block-group *,
+.legacy-header.scrolled .wp-block-navigation {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+.legacy-header.scrolled .custom-logo {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+.legacy-header.scrolled
+  .wp-block-navigation-item__label,
+.legacy-header.scrolled
+  .wp-block-navigation__submenu-container
+  a,
+.legacy-header.scrolled .wp-block-button__link,
+.legacy-header.scrolled .wp-block-site-logo a,
+.legacy-header.scrolled .wp-block-site-logo img,
+.legacy-header.scrolled .wp-block-site-logo svg,
+.legacy-header.scrolled .wp-block-search__button,
+.legacy-header.scrolled .wp-block-search__input {
+  color: #111111 !important;
+  fill: #111111 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
