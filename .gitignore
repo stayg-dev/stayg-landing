@@ -21,6 +21,10 @@
 /build
 /dist
 
+# legacy assets
+/public/uploads
+/public/legacy
+
 # misc
 .DS_Store
 *.pem

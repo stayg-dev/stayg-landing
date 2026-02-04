@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm build:*)",
+      "Bash(git rm:*)",
+      "Bash(del \"C:\\\\dev\\\\stayg-landing\\\\vercel.json\")",
+      "Bash(pnpm install:*)"
+    ]
+  }
+}
