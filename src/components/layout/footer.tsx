@@ -113,7 +113,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <Link href="https://blog.naver.com/stay-g-inc" aria-label="STAY-G Blog">
                 <Image
-                  src="/uploads/2024/11/bligic.png"
+                  src="/icons/blog.png"
                   alt="Naver Blog"
                   width={24}
                   height={24}
