@@ -43,12 +43,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## 📖 상세 가이드
 
-처음 설치하거나 빌드하는 경우 **[BUILD_GUIDE.md](./BUILD_GUIDE.md)** 문서를 참고하세요.
-- 필수 프로그램 설치 방법
-- 프로젝트 설정 방법
-- 개발/프로덕션 환경 실행
-- 배포 가이드
-- 문제 해결 방법
+- **빌드·설치**: **[BUILD_GUIDE.md](./BUILD_GUIDE.md)** — 필수 프로그램 설치, 프로젝트 설정, 개발/프로덕션 실행, 배포, 문제 해결
+- **Umami 통계**: **[UMAMI_GUIDE.md](./UMAMI_GUIDE.md)** — 로그인 → 도메인(사이트) 연결 → 대시보드에서 통계 확인
 
 ## 시작하기
 

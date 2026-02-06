@@ -17,7 +17,7 @@ export default function AboutStayG() {
       <div className="absolute inset-0 bg-linear-to-b from-[#16120d]/0 via-[#16120d]/40 to-[#16120d]/70" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center md:px-8 lg:items-start lg:justify-start lg:pl-25 lg:text-start">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center justify-center px-2.5 text-center md:px-9 lg:items-start lg:justify-start lg:text-start">
         {/* Logo */}
         <div className="mb-6 md:mb-8 lg:mb-10">
           <Image

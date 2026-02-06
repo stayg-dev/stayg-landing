@@ -55,8 +55,8 @@ export default function Brand() {
 
   return (
     <section>
-      <div className="bg-white px-6 py-10 lg:p-25">
-        <div>
+      <div className="bg-white py-10 lg:py-25">
+        <div className="mx-auto max-w-7xl px-2.5 md:px-9">
           <div className="relative">
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">

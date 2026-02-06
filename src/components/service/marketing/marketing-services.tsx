@@ -108,78 +108,80 @@ const features = [
 
 export default function MarketingServices() {
   return (
-    <section className="bg-white px-5 py-12 md:px-12 lg:px-24 lg:py-24">
-      {/* Header */}
-      <header className="mb-6 lg:mb-10">
-        <h2 className="mb-6 font-semibold text-[#474747] text-lg lg:text-[28px]">
-          어떤 채널이든, 방식이든
-          <br />
-          매출을 끌어올리기 위한 마케팅을 적극 합니다.
-        </h2>
-        <div className="font-light text-[#474747] text-sm lg:text-[22px]">
-          <p>SNS 소셜 미디어 마케팅, NAVER 검색 노출 마케팅, 홈페이지 제작, 촬영/편집/보정까지</p>
-          <p>다양한 방법으로 숙박 시설의 노출, 광고, 채널 관리, 프로모션을 통해</p>
-          <p>최대 매출 확보를 위해 최선을 다합니다.</p>
-        </div>
-      </header>
+    <section className="bg-white py-12 lg:py-24">
+      <div className="mx-auto max-w-7xl px-2.5 md:px-9">
+        {/* Header */}
+        <header className="mb-6 lg:mb-10">
+          <h2 className="mb-6 font-semibold text-[#474747] text-lg lg:text-[28px]">
+            어떤 채널이든, 방식이든
+            <br />
+            매출을 끌어올리기 위한 마케팅을 적극 합니다.
+          </h2>
+          <div className="font-light text-[#474747] text-sm lg:text-[22px]">
+            <p>SNS 소셜 미디어 마케팅, NAVER 검색 노출 마케팅, 홈페이지 제작, 촬영/편집/보정까지</p>
+            <p>다양한 방법으로 숙박 시설의 노출, 광고, 채널 관리, 프로모션을 통해</p>
+            <p>최대 매출 확보를 위해 최선을 다합니다.</p>
+          </div>
+        </header>
 
-      {/* Service Cards Grid */}
-      <div className="mb-6 grid grid-cols-1 gap-6 lg:mb-0 xl:grid-cols-2">
-        {serviceCards.map((card) => (
-          <div
-            key={card.id}
-            className="flex h-auto flex-col gap-6 bg-stone-700 p-6 md:h-84 lg:p-13"
-          >
-            <span className="w-fit rounded-full border border-white px-2.5 py-1 font-medium text-white text-xs">
-              {card.tag}
-            </span>
-            <div className="flex flex-col gap-5">
-              <h3 className="font-semibold text-white text-xl lg:text-[28px]">{card.title}</h3>
-              <div className="font-light text-neutral-200 text-sm leading-6 md:text-base">
-                {card.description.map((line) => (
+        {/* Service Cards Grid */}
+        <div className="mb-6 grid grid-cols-1 gap-6 lg:mb-0 xl:grid-cols-2">
+          {serviceCards.map((card) => (
+            <div
+              key={card.id}
+              className="flex h-auto flex-col gap-6 bg-stone-700 p-6 md:h-84 lg:p-13"
+            >
+              <span className="w-fit rounded-full border border-white px-2.5 py-1 font-medium text-white text-xs">
+                {card.tag}
+              </span>
+              <div className="flex flex-col gap-5">
+                <h3 className="font-semibold text-white text-xl lg:text-[28px]">{card.title}</h3>
+                <div className="font-light text-neutral-200 text-sm leading-6 md:text-base">
+                  {card.description.map((line) => (
+                    <p key={line}>{line}</p>
+                  ))}
+                </div>
+                {card.bulletPoints && (
+                  <div className="flex flex-col gap-4 md:flex-row md:gap-5">
+                    {card.bulletPoints.map((column) => (
+                      <ul
+                        key={column.join("-")}
+                        className="font-light text-neutral-200 text-sm leading-6 md:text-base"
+                      >
+                        {column.map((item) => (
+                          <li key={item}>• {item}</li>
+                        ))}
+                      </ul>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Features Section */}
+        <div className="grid grid-cols-2 gap-8 py-10 lg:grid-cols-4 lg:gap-2 lg:py-15">
+          {features.map((feature) => (
+            <div className="flex flex-col items-center gap-2 text-center lg:gap-4" key={feature.id}>
+              <div className="relative h-14 w-14">
+                <Image
+                  src={feature.icon}
+                  alt={feature.title}
+                  fill
+                  className="bg-gray-200y object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <h4 className="font-semibold text-lg text-zinc-700 lg:text-xl">{feature.title}</h4>
+              <div className="font-light text-xs text-zinc-700 leading-6 lg:text-base">
+                {feature.description.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
               </div>
-              {card.bulletPoints && (
-                <div className="flex flex-col gap-4 md:flex-row md:gap-5">
-                  {card.bulletPoints.map((column) => (
-                    <ul
-                      key={column.join("-")}
-                      className="font-light text-neutral-200 text-sm leading-6 md:text-base"
-                    >
-                      {column.map((item) => (
-                        <li key={item}>• {item}</li>
-                      ))}
-                    </ul>
-                  ))}
-                </div>
-              )}
             </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Features Section */}
-      <div className="grid grid-cols-2 gap-8 py-10 lg:grid-cols-4 lg:gap-2 lg:py-15">
-        {features.map((feature) => (
-          <div className="flex flex-col items-center gap-2 text-center lg:gap-4" key={feature.id}>
-            <div className="relative h-14 w-14">
-              <Image
-                src={feature.icon}
-                alt={feature.title}
-                fill
-                className="bg-gray-200y object-contain"
-                loading="lazy"
-              />
-            </div>
-            <h4 className="font-semibold text-lg text-zinc-700 lg:text-xl">{feature.title}</h4>
-            <div className="font-light text-xs text-zinc-700 leading-6 lg:text-base">
-              {feature.description.map((line) => (
-                <p key={line}>{line}</p>
-              ))}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

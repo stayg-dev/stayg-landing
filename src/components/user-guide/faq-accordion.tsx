@@ -40,8 +40,8 @@ export default function FaqAccordion() {
   };
 
   return (
-    <section className="bg-[#534F4C] px-6 py-10 lg:p-25">
-      <div className="mx-auto max-w-7xl">
+    <section className="bg-[#534F4C] py-10 lg:py-25">
+      <div className="mx-auto w-full max-w-7xl px-2.5 md:px-9">
         <header className="mb-4 lg:mb-7">
           <h2 className="font-semibold text-white text-xl lg:text-[28px]">자주 묻는 질문</h2>
           <p className="mt-6 font-light text-base text-white lg:text-[22px]">

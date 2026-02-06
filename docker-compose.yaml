@@ -1,0 +1,47 @@
+services:
+   stayg-landing:
+    image: stayg-landing
+    container_name: stayg-landing
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_UMAMI_SCRIPT_URL=${NEXT_PUBLIC_UMAMI_SCRIPT_URL:-http://localhost:3001/script.js}
+        - NEXT_PUBLIC_UMAMI_WEBSITE_ID=${NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - umami
+
+   umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    container_name: stayg-umami
+    ports:
+      - "3001:3000"
+    environment:
+      DATABASE_URL: postgresql://umami:umami@umami-db:5432/umami
+      DATABASE_TYPE: postgresql
+      APP_SECRET: ${UMAMI_APP_SECRET:-replace-me-with-a-random-string}
+    depends_on:
+      umami-db:
+        condition: service_healthy
+    restart: always
+
+   umami-db:
+    image: postgres:16-alpine
+    container_name: stayg-umami-db
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: umami
+    volumes:
+      - umami-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+volumes:
+  umami-db-data:

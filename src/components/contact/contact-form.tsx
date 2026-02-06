@@ -57,6 +57,9 @@ export default function ContactForm() {
 
     if (result.success) {
       setSubmitStatus("success");
+      window.umami?.track("form_submit", {
+        form: "contact_page",
+      });
       form.reset();
     } else {
       setSubmitStatus("error");
@@ -65,8 +68,8 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="w-full bg-stone-700 px-6 py-10 pb-30 lg:px-50 lg:pt-15">
-      <div className="mx-auto max-w-260">
+    <section className="w-full bg-stone-700 py-10 pb-30 lg:pt-15">
+      <div className="mx-auto max-w-260 px-2.5 md:px-9">
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-8.75">
           {/* Name */}
           <div className="flex flex-col gap-2">

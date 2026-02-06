@@ -93,7 +93,7 @@ export default function PropertyShowcase() {
       />
 
       {/* Content Container */}
-      <div className="relative z-10 flex w-full flex-col gap-8 py-12 pr-0 pl-5 md:flex-row md:items-center md:gap-6 md:pl-10 lg:gap-22.25 xl:pl-20">
+      <div className="relative z-10 flex w-full flex-col gap-8 py-12 pr-0 pl-2.5 md:flex-row md:items-center md:gap-6 md:pl-[max(2.25rem,calc((100vw-80rem)/2+2.25rem))] lg:gap-22.25">
         {/* Left Side - Branding */}
         <div className="flex flex-col gap-5 text-center md:shrink-0 md:text-start">
           <div className="flex flex-col">

@@ -13,7 +13,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-4xl px-6 lg:px-25">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-2.5 md:px-9">
         <div className="flex flex-col gap-6 text-center lg:text-start">
           <h1 className="font-chosunilbo font-normal text-white text-xl sm:text-2xl md:text-[43px]">
             서비스 이용 절차 및

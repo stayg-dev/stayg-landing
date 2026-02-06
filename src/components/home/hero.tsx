@@ -18,23 +18,27 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center lg:px-0">
+      <div className="relative z-10 flex flex-col items-center justify-center px-2.5 text-center lg:px-0">
         {/* Main Heading */}
-        <h1 className="font-chosunilbo font-normal text-4xl text-white leading-12 lg:text-5xl lg:leading-[62.75px]">
-          숙박시설
-          <br />
-          오픈부터 매각까지
-        </h1>
+        <div>
+          <h1 className="mb-4.5 font-chosunilbo font-normal text-2xl text-white lg:text-[40px]">
+            숙박 운영의 시작부터 매출까지
+          </h1>
+
+          <h2 className="font-extrabold text-3xl text-white lg:text-5xl">
+            위탁운영 · 무인관제 · OTA 운영대행
+          </h2>
+        </div>
 
         {/* Logo */}
-        <div className="mt-3.75 mb-10 flex items-center justify-center sm:mb-20 lg:mb-27">
+        <div className="mt-6.75 mb-10 flex items-center justify-center sm:mb-20 lg:mb-22.25">
           <Image
             src={Logo}
             alt="STAY-G Logo"
             width={500}
             height={300}
             loading="lazy"
-            className="h-14 w-46.25"
+            className="h-12 w-46.25"
           />
         </div>
 
@@ -52,6 +56,9 @@ export default function Hero() {
         <Link
           href="/contact"
           className="group inline-flex h-11 items-center justify-center gap-2 border border-white bg-[#333a42b3] py-3 pr-4 pl-6 font-normal text-sm text-white"
+          data-umami-event="cta_click"
+          data-umami-event-location="hero"
+          data-umami-event-label="지금 바로 상담받으세요"
         >
           <span>지금 바로 상담받으세요</span>
           <ChevronRight size={20} />

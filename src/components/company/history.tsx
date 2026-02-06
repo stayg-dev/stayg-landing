@@ -147,7 +147,7 @@ export default function History() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-2.5 md:px-9">
         {/* Header Section */}
         <div className="mb-8 text-center lg:mb-21">
           <p className="font-light text-[#474747] text-base md:text-lg lg:text-[28px]">

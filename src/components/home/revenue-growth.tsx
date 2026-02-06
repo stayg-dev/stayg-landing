@@ -33,7 +33,7 @@ export default function RevenueGrowth() {
   return (
     <section className="w-full overflow-hidden bg-[#F5F5F5] py-16 md:py-20 lg:pt-21.5 lg:pb-42.25">
       {/* Title */}
-      <h2 className="mb-12 text-center font-chosunilbo font-normal text-[22px] text-logo-gradient md:mb-18 md:text-4xl lg:text-[43px]">
+      <h2 className="mb-12 px-2.5 text-center font-chosunilbo font-normal text-[22px] text-logo-gradient md:mb-18 md:px-0 md:text-4xl lg:text-[43px]">
         매출 220% 올리는 STAY-G 솔루션
       </h2>
 

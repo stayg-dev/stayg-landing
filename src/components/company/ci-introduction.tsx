@@ -21,7 +21,7 @@ export default function CIIntroduction() {
       <div className="absolute inset-0 bg-neutral-900/40" />
 
       {/* Content */}
-      <div className="relative z-10 flex w-full flex-col items-center gap-8 px-6 lg:gap-10.5 lg:px-24">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-8 px-2.5 md:px-9 lg:gap-10.5">
         {/* Header */}
         <div className="flex flex-col items-center gap-4 lg:gap-5">
           <h2 className="text-center font-chosunilbo text-3xl text-white lg:text-[43px]">

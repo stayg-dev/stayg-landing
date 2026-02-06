@@ -48,7 +48,7 @@ export default function GrowthCta() {
       <div className="absolute inset-0 bg-linear-to-b from-[#16120d]/42 to-[#16120d]/42" />
 
       {/* Content Container */}
-      <div className="relative z-10 flex flex-col items-center px-6 py-12 text-center md:px-8">
+      <div className="relative z-10 flex flex-col items-center px-2.5 py-12 text-center md:px-9">
         {/* Headline */}
         <h2 className="font-chosunilbo text-white text-xl leading-tight md:text-2xl lg:text-[43px]">
           함께 수익과 자산을 극대화 시킬 수 있습니다
@@ -67,6 +67,9 @@ export default function GrowthCta() {
               href={items.link}
               key={items.id}
               className="flex w-full items-center justify-center gap-2 border-logo-gradient bg-[#362F25]/60 px-6 py-4 backdrop-blur-lg transition-all md:w-xs md:py-5 xl:w-100"
+              data-umami-event="cta_click"
+              data-umami-event-location="growth_cta"
+              data-umami-event-label={items.label}
             >
               <Image src={items.icon} alt="" className="h-8 w-8 shrink-0 md:h-10 md:w-10" />
               <span className="font-normal text-lg text-white md:text-xl lg:text-2xl">

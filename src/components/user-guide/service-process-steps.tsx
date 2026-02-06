@@ -109,8 +109,8 @@ const serviceSteps = [
 
 export default function ServiceProcessSteps() {
   return (
-    <section className="bg-[#F5F5F5] px-6 py-10 lg:p-25">
-      <div className="mx-auto flex max-w-7xl flex-col gap-5 lg:gap-10">
+    <section className="bg-[#F5F5F5] py-10 lg:py-25">
+      <div className="mx-auto flex max-w-7xl flex-col gap-5 px-2.5 md:px-9 lg:gap-10">
         {/* Section Header */}
         <div className="flex flex-col gap-6">
           <h2 className="font-semibold text-logo-gradient text-xl lg:text-[28px]">

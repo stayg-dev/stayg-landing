@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function LocationMap() {
   return (
-    <section className="w-full bg-[#373432] px-6 py-10 lg:px-50 lg:pt-30 lg:pb-15">
-      <div className="mx-auto flex max-w-260 flex-col gap-2">
+    <section className="w-full bg-[#373432] py-10 lg:pt-30 lg:pb-15">
+      <div className="mx-auto flex max-w-260 flex-col gap-2 px-2.5 md:px-9">
         <div className="flex flex-col gap-2">
           <h2 className="font-semibold text-white text-xl lg:text-[28px] lg:leading-10">
             오시는길

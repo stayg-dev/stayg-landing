@@ -57,8 +57,8 @@ export default function CollectionCase() {
   return (
     <>
       {/* Top: Location cards */}
-      <section className="bg-white px-6 py-10 lg:p-25">
-        <div>
+      <section className="bg-white py-10 lg:py-25">
+        <div className="mx-auto max-w-7xl px-2.5 md:px-9">
           <div className="relative">
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
@@ -145,8 +145,8 @@ export default function CollectionCase() {
       </section>
 
       {/* Bottom: Detail view */}
-      <section className="bg-neutral-100 p-6 sm:p-10 lg:p-25">
-        <div className="mx-auto flex flex-col gap-10">
+      <section className="bg-neutral-100 py-6 sm:py-10 lg:py-25">
+        <div className="mx-auto flex max-w-7xl flex-col gap-10 px-2.5 md:px-9">
           <div className="flex flex-col gap-4 lg:gap-6">
             <h2 className="font-semibold text-logo-gradient text-xl lg:text-[28px]">
               {active.region} {active.area}
