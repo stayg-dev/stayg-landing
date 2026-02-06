@@ -44,13 +44,6 @@ export default function IntroVideo() {
               playsInline
             >
               <source src="/home/video/intro.mp4" type="video/mp4" />
-              <track
-                kind="captions"
-                src="/home/video/intro-captions.vtt"
-                srcLang="en"
-                label="English captions"
-                default
-              />
               Your browser does not support the video tag.
             </video>
 

@@ -16,7 +16,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: "회사정보", href: "/company" as Route },
   { label: "사업분야", href: "/service/operation" as Route },
-  { label: "HIO", href: "#" as Route },
+  { label: "HiO", href: "#" as Route },
   { label: "REFERENCE", href: "/reference/brand" as Route },
   { label: "이용가이드", href: "/user-guide" as Route },
 ];
@@ -60,7 +60,7 @@ export default function Header() {
     <>
       {/* Header */}
       <header className="h-17.5 w-full border-stone-900 border-b bg-background transition-shadow duration-30">
-        <div className="mx-auto flex h-full max-w-360 items-center justify-between px-6 lg:pr-22.5 lg:pl-25.5">
+        <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-2.5 md:px-9">
           <div className="flex items-center gap-10.5">
             {/* Logo */}
             <Link href="/" className="shrink-0 transition-opacity duration-200">
@@ -104,6 +104,9 @@ export default function Header() {
             <Link
               href={"/contact" as Route}
               className="group flex items-center gap-1 font-semibold text-sm text-white"
+              data-umami-event="cta_click"
+              data-umami-event-location="header"
+              data-umami-event-label="24시간 문의하기"
             >
               24시간 문의하기
               <ChevronRight size={16} />
@@ -145,7 +148,7 @@ export default function Header() {
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex h-16 items-center justify-between border-stone-900 border-b px-4">
+          <div className="flex h-16 items-center justify-between border-stone-900 border-b px-2.5">
             <Link
               href="/"
               onClick={closeMenu}
@@ -163,7 +166,7 @@ export default function Header() {
             </button>
           </div>
 
-          <nav className="px-6 pt-8">
+          <nav className="px-2.5 pt-8">
             <ul className="flex flex-col gap-2">
               {navItems.map((item, index) => {
                 const basePath = item.href.split("/")[1];
@@ -195,6 +198,9 @@ export default function Header() {
             <Link
               href={"/contact" as Route}
               onClick={closeMenu}
+              data-umami-event="cta_click"
+              data-umami-event-location="mobile_menu"
+              data-umami-event-label="24시간 문의하기"
               className={`group mt-5 inline-flex items-center gap-1 font-semibold text-sm text-white ${
                 isMobileMenuOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
               }`}

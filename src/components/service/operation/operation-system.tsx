@@ -61,48 +61,50 @@ const services = [
 
 export default function OperationSystem() {
   return (
-    <section className="bg-white px-5 py-12 lg:p-25">
-      {/* Header */}
-      <header className="mb-8 lg:mb-11">
-        <h2 className="mb-6 font-semibold text-logo-gradient text-xl md:text-2xl lg:text-[28px]">
-          STAY-G 위탁 운영 시스템
-        </h2>
-        <div className="font-light text-[#474747] text-sm leading-tight md:text-base lg:text-[22px]">
-          <p>STAY-G는 매출이 탄탄한 숙박시설 만들어 드립니다.</p>
-          <p>판매 채널 별 매출을 일 단위로 정확히 기록하고</p>
-          <p>실시간 커뮤니케이션으로 24시간 빠르게 대응합니다.</p>
-        </div>
-      </header>
+    <section className="bg-white py-12 lg:py-25">
+      <div className="mx-auto max-w-7xl px-2.5 md:px-9">
+        {/* Header */}
+        <header className="mb-8 lg:mb-11">
+          <h2 className="mb-6 font-semibold text-logo-gradient text-xl md:text-2xl lg:text-[28px]">
+            STAY-G 위탁 운영 시스템
+          </h2>
+          <div className="font-light text-[#474747] text-sm leading-tight md:text-base lg:text-[22px]">
+            <p>STAY-G는 매출이 탄탄한 숙박시설 만들어 드립니다.</p>
+            <p>판매 채널 별 매출을 일 단위로 정확히 기록하고</p>
+            <p>실시간 커뮤니케이션으로 24시간 빠르게 대응합니다.</p>
+          </div>
+        </header>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
-        {services.map((service) => (
-          <article key={service.id} className="relative aspect-610/520 overflow-hidden">
-            {/* Background Image */}
-            <Image
-              src={service.image}
-              alt={service.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              loading="lazy"
-            />
+        {/* Grid */}
+        <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
+          {services.map((service) => (
+            <article key={service.id} className="relative aspect-610/520 overflow-hidden">
+              {/* Background Image */}
+              <Image
+                src={service.image}
+                alt={service.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                loading="lazy"
+              />
 
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black/20" />
+              {/* Dark Overlay */}
+              <div className="absolute inset-0 bg-black/20" />
 
-            {/* Text Overlay */}
-            <div className="absolute bottom-0 left-0 flex w-full flex-col justify-center bg-stone-700 p-4 md:p-6 lg:pr-2 lg:pl-12.75 xl:py-10">
-              <h3 className="mb-3 font-semibold text-lg text-white lg:text-[26px]">
-                {service.title}
-              </h3>
-              <div className="font-light text-sm text-white leading-relaxed lg:text-xl lg:leading-7">
-                <p>{service.description1}</p>
-                <p>{service.description2}</p>
+              {/* Text Overlay */}
+              <div className="absolute bottom-0 left-0 flex w-full flex-col justify-center bg-stone-700 p-4 md:p-6 lg:pr-2 lg:pl-12.75 xl:py-10">
+                <h3 className="mb-3 font-semibold text-lg text-white lg:text-[26px]">
+                  {service.title}
+                </h3>
+                <div className="font-light text-sm text-white leading-relaxed lg:text-xl lg:leading-7">
+                  <p>{service.description1}</p>
+                  <p>{service.description2}</p>
+                </div>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
