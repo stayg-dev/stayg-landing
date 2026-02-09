@@ -1,4 +1,5 @@
 import Image from "next/image";
+import OperationHeroText from "@/assets/text/operation-hero.svg";
 
 export default function Hero() {
   return (
@@ -16,10 +17,14 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-2.5 md:px-9">
         <div className="flex max-w-4xl flex-col gap-6 text-center lg:text-start">
-          <h1 className="font-chosunilbo font-normal text-white text-xl sm:text-2xl md:text-[43px]">
-            체계적인 시스템과 최고의 전문가들이
-            <br />
-            숙박 시설 위탁 운영을 해드립니다.
+          <h1 className="flex justify-center lg:justify-start">
+            <Image
+              src={OperationHeroText}
+              alt="체계적인 시스템과 최고의 전문가들이 숙박 시설 위탁 운영을 해드립니다."
+              width={15380}
+              height={2350}
+              className="h-[47px] w-auto sm:h-[56px] md:h-[101px]"
+            />
           </h1>
           <p className="font-normal text-sm text-white md:text-lg">
             국내외 2,400개 객실, 중소형 호텔, 관광 호텔, 펜션, 글램핑 등 다양한 생활숙박시설

@@ -4,6 +4,7 @@ import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/assets/logo.svg";
+import HomeHeroText from "@/assets/text/home-hero.svg";
 
 export default function Hero() {
   return (
@@ -21,8 +22,14 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center justify-center px-2.5 text-center lg:px-0">
         {/* Main Heading */}
         <div>
-          <h1 className="mb-4.5 font-chosunilbo font-normal text-2xl text-white lg:text-[40px]">
-            숙박 운영의 시작부터 매출까지
+          <h1 className="mb-4.5 flex justify-center">
+            <Image
+              src={HomeHeroText}
+              alt="숙박 운영의 시작부터 매출까지"
+              width={12635}
+              height={1000}
+              className="h-6 w-auto lg:h-10"
+            />
           </h1>
 
           <h2 className="font-extrabold text-3xl text-white lg:text-5xl">

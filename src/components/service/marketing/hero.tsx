@@ -1,4 +1,5 @@
 import Image from "next/image";
+import MarketingHeroText from "@/assets/text/marketing-hero.svg";
 
 export default function Hero() {
   return (
@@ -15,9 +16,14 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-2.5 md:px-9">
         <div className="flex flex-col gap-6 text-center lg:text-start">
-          <h1 className="font-chosunilbo font-normal text-white text-xl sm:text-2xl md:text-[43px]">
-            OTA · SNS <br />
-            온/오프라인 마케팅
+          <h1 className="flex justify-center lg:justify-start">
+            <Image
+              src={MarketingHeroText}
+              alt="OTA · SNS 온/오프라인 마케팅"
+              width={7915}
+              height={2244}
+              className="h-[45px] w-auto sm:h-[54px] md:h-[96px]"
+            />
           </h1>
           <p className="font-normal text-sm text-white md:text-lg">
             다양한 OTA플랫폼과 SNS플랫폼

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ContactHeroText from "@/assets/text/contact-hero.svg";
 
 export default function Hero() {
   return (
@@ -16,8 +17,14 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-2.5 md:px-9">
         <div className="flex flex-col gap-6 text-center lg:text-start">
-          <h1 className="font-chosunilbo font-normal text-white text-xl sm:text-2xl md:text-[43px]">
-            문의하기
+          <h1 className="flex justify-center lg:justify-start">
+            <Image
+              src={ContactHeroText}
+              alt="문의하기"
+              width={3545}
+              height={1000}
+              className="h-5 w-auto sm:h-6 md:h-[43px]"
+            />
           </h1>
           <p className="font-normal text-sm text-white md:text-lg">
             스테이지가 언제든지 편하게 알려드리겠습니다.
