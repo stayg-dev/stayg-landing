@@ -24,6 +24,10 @@ const chosunilbo = localFont({
 export const metadata: Metadata = {
   title: "(주)스테이지 STAY-G - 숙박 운영의 시작부터 매출까지 위탁운영 · 무인관제 · OTA 운영대행",
   description: "위탁운영 · 무인관제 · OTA 운영대행",
+  icons: {
+    icon: "/src/app/favicon.ico",
+    apple: "/src/app/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
