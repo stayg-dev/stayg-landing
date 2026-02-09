@@ -2,6 +2,9 @@ services:
    stayg-landing:
     image: stayg-landing
     container_name: stayg-landing
+    hostname: localhost
+    environment:
+      - HOSTNAME=0.0.0.0
     build:
       context: .
       dockerfile: Dockerfile

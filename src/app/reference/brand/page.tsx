@@ -142,9 +142,9 @@ export default function Brand() {
         </div>
       </div>
 
-      <div className="flex justify-center bg-white">
+      <div className="mx-auto flex max-w-7xl justify-center bg-white px-2.5 md:px-9">
         <Image
-          src="/reference/brand-location.webp"
+          src="/reference/brand-location.svg"
           alt="스테이지 전국 브랜드 위치 지도"
           width={1440}
           height={1212}
