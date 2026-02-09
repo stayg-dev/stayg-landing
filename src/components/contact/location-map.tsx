@@ -1,9 +1,7 @@
-import Image from "next/image";
-
 export default function LocationMap() {
   return (
     <section className="w-full bg-[#373432] py-10 lg:pt-30 lg:pb-15">
-      <div className="mx-auto flex max-w-260 flex-col gap-2 px-2.5 md:px-9">
+      <div className="mx-auto flex max-w-7xl flex-col gap-2 px-2.5 md:px-9">
         <div className="flex flex-col gap-2">
           <h2 className="font-semibold text-white text-xl lg:text-[28px] lg:leading-10">
             오시는길
@@ -21,12 +19,16 @@ export default function LocationMap() {
           </p>
         </div>
         <div className="relative aspect-video w-full overflow-hidden border border-neutral-600 bg-stone-800">
-          <Image
-            src="/contact/map.webp"
-            alt="오시는길 지도"
-            fill
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1530.3239024039638!2d126.88522048710706!3d37.471185972443386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b61e6312b905b%3A0x6218490db7931e1f!2z7ISc7Jq47Yq567OE7IucIOq4iOyynOq1rCDqsIDsgrDrj5kgMzE5LTg!5e0!3m2!1sko!2skr!4v1770380506248!5m2!1sko!2skr"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
             loading="lazy"
-            className="object-cover"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="absolute inset-0"
+            title="오시는길 지도"
           />
         </div>
       </div>

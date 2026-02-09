@@ -67,8 +67,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-stone-700 px-5 py-10 sm:px-6 md:px-8 md:py-16 lg:py-13">
-      <div className="mx-auto max-w-262.75">
+    <footer className="w-full bg-stone-700 py-10 md:py-16 lg:py-13">
+      <div className="mx-auto max-w-7xl px-2.5 md:px-9">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-15">
           {/* Title Section */}
           <div className="shrink-0 text-left">

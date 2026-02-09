@@ -53,7 +53,7 @@ export default function BusinessConcerns() {
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-2.5 md:px-9">
+      <div className="container relative z-10 mx-auto max-w-7xl px-2.5 md:px-9">
         {/* Header */}
         <div className="mb-10 text-center md:mb-15">
           <h2 className="mb-6.25 font-chosunilbo font-normal text-[22px] text-logo-gradient md:text-3xl lg:text-[43px]">
@@ -69,7 +69,7 @@ export default function BusinessConcerns() {
         </div>
 
         {/* Concern Cards */}
-        <div className="mx-auto flex max-w-231 flex-col gap-4">
+        <div className="flex flex-col gap-4">
           {concerns.map((concern) => (
             <div
               key={concern.id}
