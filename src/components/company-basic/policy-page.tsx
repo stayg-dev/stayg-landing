@@ -38,7 +38,7 @@ export default function PolicyPage({
       <section className="mx-auto max-w-7xl px-4 pt-0 pb-10 md:pb-14">
         <div className="grid grid-cols-2 border-[#b9b9b9] border-x">
           <Link
-            href="/company-basic/personal-information/"
+            href="/company-basic/personal-information"
             className={`border-[#b9b9b9] border-b px-3 py-3 text-center text-lg ${
               activeTab === "privacy" ? "border-[#3a3a3a] text-[#1f1f1f]" : "text-[#2b2b2b]"
             }`}
@@ -46,7 +46,7 @@ export default function PolicyPage({
             Privacy Policy
           </Link>
           <Link
-            href="/company-basic/emails-permission/"
+            href="/company-basic/emails-permission"
             className={`border-[#b9b9b9] border-b px-3 py-3 text-center text-lg ${
               activeTab === "emails" ? "border-[#3a3a3a] text-[#1f1f1f]" : "text-[#2b2b2b]"
             }`}

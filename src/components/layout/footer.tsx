@@ -213,13 +213,13 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1 leading-7">
                   <Link
-                    href="/company-basic/personal-information/"
+                    href="/company-basic/personal-information"
                     className="inline-flex whitespace-nowrap transition-colors hover:text-white"
                   >
                     개인정보처리방침
                   </Link>
                   <Link
-                    href="/company-basic/emails-permission/"
+                    href="/company-basic/emails-permission"
                     className="inline-flex whitespace-nowrap transition-colors hover:text-white"
                   >
                     이메일무단수집거부
@@ -228,22 +228,22 @@ export default function Footer() {
               </div>
 
               <div className="mt-5 flex flex-wrap gap-3">
-                <Link
+                <a
                   href="/uploads/2024/11/stay-g_company.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center border border-white/40 px-5 py-2 text-xs transition-colors hover:border-white hover:bg-white hover:text-black"
                 >
                   회사소개서 다운로드
-                </Link>
-                <Link
+                </a>
+                <a
                   href="/uploads/2024/11/stay-g_company.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center border border-white/40 px-5 py-2 text-xs transition-colors hover:border-white hover:bg-white hover:text-black"
                 >
                   COMPANY PROFILE
-                </Link>
+                </a>
               </div>
             </div>
           </div>
