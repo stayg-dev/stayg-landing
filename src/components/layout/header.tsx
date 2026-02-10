@@ -16,7 +16,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: "회사정보", href: "/company" as Route },
   { label: "사업분야", href: "/service/operation" as Route },
-  { label: "HiO", href: "#" as Route },
+  { label: "HiO", href: "/hio" as Route },
   { label: "REFERENCE", href: "/reference/brand" as Route },
   { label: "이용가이드", href: "/user-guide" as Route },
 ];
