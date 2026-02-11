@@ -86,8 +86,10 @@ export default function Header() {
                     <li key={item.label}>
                       <Link
                         href={item.href}
-                        className={`font-normal text-sm transition-colors duration-200 ${
-                          isActive ? "text-[#D5D5D7]" : "text-[#545454] hover:text-[#D5D5D7]"
+                        className={`text-sm transition-colors duration-200 ${
+                          isActive
+                            ? "font-extrabold text-[#f2f2f2]"
+                            : "font-semibold text-[#a3a3a3] hover:text-[#f2f2f2]"
                         }`}
                       >
                         {item.label}
@@ -185,7 +187,9 @@ export default function Header() {
                       href={item.href}
                       onClick={closeMenu}
                       className={`block py-2 transition-colors duration-200 ${
-                        isActive ? "text-white" : "text-[#545454] hover:text-[#D5D5D7]"
+                        isActive
+                          ? "font-extrabold text-[#f2f2f2]"
+                          : "font-semibold text-[#a3a3a3] hover:text-[#f2f2f2]"
                       }`}
                     >
                       {item.label}
