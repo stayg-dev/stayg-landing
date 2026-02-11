@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronRight } from "lucide-react";
@@ -31,7 +31,7 @@ export default function Brand() {
     setSelectedIndex(emblaApi.selectedSnap());
   }, [emblaApi]);
 
-  const HandelKnowMore = (index: number) => {
+  const handleKnowMore = (index: number) => {
     setExpandedIndex(index);
     router.push(`/reference/collection?buildingId=${BRANDS_DATA[index].id}`);
   };
@@ -71,7 +71,13 @@ export default function Brand() {
                           : "w-full lg:w-[calc(100%/4)] xl:w-[calc(100%/7)]"
                       }`}
                     >
-                      <div className="group relative flex h-full cursor-pointer flex-col justify-end overflow-hidden text-left">
+                      <button
+                        type="button"
+                        onMouseEnter={() => setExpandedIndex(index)}
+                        onFocus={() => setExpandedIndex(index)}
+                        onClick={() => handleKnowMore(index)}
+                        className="group relative flex h-full w-full cursor-pointer flex-col justify-end overflow-hidden text-left"
+                      >
                         <Image
                           src={location.image}
                           alt={`${location.region} ${location.area}`}
@@ -84,7 +90,7 @@ export default function Brand() {
                         <div className="relative flex flex-col gap-4 p-6 lg:gap-6 lg:p-8">
                           <div className="flex flex-col gap-1 lg:gap-2">
                             <span
-                              className={`font-semibold text-lg text-white ${isActive ? `lg:text-2xl` : `lg:text-[22px]`}`}
+                              className={`font-semibold text-lg text-white ${isActive ? "lg:text-2xl" : "lg:text-[22px]"}`}
                             >
                               {location.region}
                             </span>
@@ -92,27 +98,20 @@ export default function Brand() {
                               {location.area}
                             </span>
                           </div>
-                          <button
-                            type="button"
-                            onClick={() => HandelKnowMore(index)}
-                            className="group relative flex h-full w-full cursor-pointer flex-col justify-end overflow-hidden text-left transition-all duration-500 ease-in-out"
-                          >
-                            <div className="inline-flex items-center">
-                              <span className="font-normal text-white underline underline-offset-2 lg:text-sm">
-                                자세히 보기
-                              </span>
-                              <ChevronRight size={20} className="text-white" />
-                            </div>
-                          </button>
+                          <div className="inline-flex items-center">
+                            <span className="font-normal text-white underline underline-offset-2 lg:text-sm">
+                              자세히 보기
+                            </span>
+                            <ChevronRight size={20} className="text-white" />
+                          </div>
                         </div>
-                      </div>
+                      </button>
                     </div>
                   );
                 })}
               </div>
             </div>
 
-            {/* Next */}
             <button
               type="button"
               onClick={scrollNext}
@@ -123,7 +122,6 @@ export default function Brand() {
             </button>
           </div>
 
-          {/* Dot indicators */}
           <div className="mt-6 flex items-center justify-center gap-2 xl:hidden">
             {BRANDS_DATA.map((location, index) => (
               <button
