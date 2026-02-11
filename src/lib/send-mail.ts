@@ -1,18 +1,18 @@
-"use server";
+﻿"use server";
 
 import nodemailer from "nodemailer";
 
 interface SendMailParams {
   name: string;
   contact: string;
+  email?: string;
   inquiry?: string;
 }
 
 export const sendMail = async (params: SendMailParams) => {
-  const { name, contact, inquiry } = params;
+  const { name, contact, email, inquiry } = params;
 
   try {
-    // Check if SMTP configuration is available
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
       console.error("SMTP configuration missing");
       throw new Error("Email service configuration is not available");
@@ -28,10 +28,8 @@ export const sendMail = async (params: SendMailParams) => {
       },
     });
 
-    // Verify the connection before sending
     await transporter.verify();
 
-    // Format date as yyyyMMddHHmmss
     const now = new Date();
     const pad = (n: number) => n.toString().padStart(2, "0");
     const formattedDate =
@@ -93,6 +91,17 @@ export const sendMail = async (params: SendMailParams) => {
           <div class="field">
           <div><span class="label">연락처:</span> <span class="value">${contact}</span></div>
           </div>
+
+          ${
+            email
+              ? `
+          <div class="field">
+          <div><span class="label">이메일:</span> <span class="value">${email}</span></div>
+          </div>
+          `
+              : ""
+          }
+
           ${
             inquiry
               ? `
@@ -114,7 +123,6 @@ export const sendMail = async (params: SendMailParams) => {
   } catch (error) {
     console.error("Email sending failed:", error);
 
-    // Return standardized error response
     return {
       success: false,
       error: error instanceof Error ? error.message : "Unknown error occurred while sending email",
