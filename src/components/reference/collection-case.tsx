@@ -75,6 +75,8 @@ export default function CollectionCase() {
                     >
                       <button
                         type="button"
+                        onMouseEnter={() => setExpandedIndex(index)}
+                        onFocus={() => setExpandedIndex(index)}
                         onClick={() => setExpandedIndex(index)}
                         className="group relative flex h-full w-full cursor-pointer flex-col justify-end overflow-hidden text-left"
                       >

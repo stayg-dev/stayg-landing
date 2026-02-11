@@ -21,6 +21,11 @@ const formSchema = z.object({
     .refine((val) => /^01\d{8,9}$/.test(val), {
       message: "전화번호는 01로 시작하고 10자리 또는 11자리 숫자여야 해요.",
     }),
+  email: z
+    .string()
+    .trim()
+    .nonempty("이메일을 입력해주세요.")
+    .email("올바른 이메일 형식으로 입력해주세요."),
   agreed: z.boolean().refine((val) => val === true, {
     message: "개인정보 수집 및 이용에 동의합니다.",
   }),
@@ -40,6 +45,7 @@ export default function Footer() {
     defaultValues: {
       name: "",
       phone: "",
+      email: "",
       agreed: false,
     },
   });
@@ -57,7 +63,7 @@ export default function Footer() {
     setSubmitStatus(null);
     setErrorMessage("");
 
-    const result = await sendMail({ name: data.name, contact: data.phone });
+    const result = await sendMail({ name: data.name, contact: data.phone, email: data.email });
 
     if (result.success) {
       setSubmitStatus("success");
@@ -90,7 +96,7 @@ export default function Footer() {
 
             <div className="w-full flex-1">
               <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4.5">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto]">
                   <div className="flex flex-col gap-2">
                     <label htmlFor="name" className="font-medium text-white">
                       성함
@@ -115,6 +121,20 @@ export default function Footer() {
                       onChange={(value) => form.setValue("phone", value)}
                       placeholder="010-0000-0000"
                       aria-invalid={!!form.formState.errors.phone}
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="email" className="font-medium text-white">
+                      이메일
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="이메일을 입력해 주세요."
+                      {...form.register("email")}
+                      aria-invalid={!!form.formState.errors.email}
+                      aria-describedby="email-error"
                     />
                   </div>
 
@@ -183,12 +203,12 @@ export default function Footer() {
               <h3 className="mb-4 font-semibold text-[#d0d0d0] text-sm tracking-[0.14em]">
                 CONTACT
               </h3>
-              <p className="text-[#999999] text-sm">010-5172-7060</p>
+              <p className="text-[#999999] text-sm">02-6925-7061</p>
               <Link
                 href="mailto:kevin7060@naver.com"
                 className="mt-1 inline-block text-[#999999] text-sm transition-colors hover:text-white"
               >
-                kevin7060@naver.com
+                stayg@stayg.kr
               </Link>
             </div>
 
@@ -264,7 +284,7 @@ export default function Footer() {
                 <Image src="/icons/blog.png" alt="" width={24} height={24} />
               </Link>
               <Link
-                href="https://www.instagram.com/stay_g.kr/"
+                href="https://www.instagram.com/stayg.kr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="STAY-G instagram"

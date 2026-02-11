@@ -54,7 +54,7 @@ const timelineData = [
     fullWidth: true,
     achievements: [
       "스테이지 시스템 PMS 개발",
-      "스테이지 무인관제 HiO 시스템 개발 진행",
+      "스테이지 무인관제 HiO 시스템 개발",
       "ISO 9001, 14001, 45001 인증",
     ],
   },
@@ -62,15 +62,15 @@ const timelineData = [
     year: "2025",
     image: "/company/history/image2.webp",
     achievements: [
-      "양산 진수캠퍼스 위탁 운영 실시",
-      "대산 모던호텔 위탁 운영 실시",
-      "서초 지젤 스위트 프로젝트 오픈",
-      "가평 스테이지 풀빌라 위탁 운영 실시",
-      "부산 그라체 프로젝트 오픈",
-      "목포 VIP 위탁 운영 실시",
-      "삼척 힐스노클 비치 위탁 운영 실시",
-      "운서동 에어포트 준 호텔 OTA 예약대행",
-      "부평 휴 스테이 위탁 운영 실시",
+      "양산 캠핑장 위탁 운영 실시",
+      "대산 호텔 위탁 운영 실시",
+      "서초 호텔 위탁 운영 실시",
+      "가평 풀빌라 위탁 운영 실시",
+      "부산 프로젝트 오픈",
+      "목포 호텔 위탁 운영 실시",
+      "삼척 호텔 위탁 운영 실시",
+      "운서동 호텔 OTA 예약대행",
+      "부평 호텔 위탁 운영 실시",
       "몽골 맥스그룹 MOU 채결",
     ],
   },
@@ -151,7 +151,7 @@ export default function History() {
         {/* Header Section */}
         <div className="mb-8 text-center lg:mb-21">
           <p className="font-light text-[#474747] text-base md:text-lg lg:text-[28px]">
-            업무표준화, 품질평가제, 전문인력, 진급 하자대응팀으로
+            업무표준화, 품질평가제, 전문인력, 전문 하자대응팀으로
           </p>
           <p className="font-light text-[#474747] text-base md:text-lg lg:text-[28px]">
             <span className="font-bold">숙박 시설 위탁 운영의 미래</span>를 만들어 갑니다.

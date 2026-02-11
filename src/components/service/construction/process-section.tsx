@@ -41,7 +41,7 @@ export default function ProcessSection() {
             <div className="h-5 w-0.5 rounded-full bg-neutral-300" />
           </div>
           <p className="font-light text-[#474747] text-xs sm:text-sm lg:text-[24px]">
-            &apos;전화 문의&apos; 또는 &apos;문의 하기&apos; 폼을 통해 접수해 주시면 한 시간 내에
+            하단 &apos;문의 하기&apos; 를 통해 접수해 주시면 한 시간 내에
             담당자가 연락 드립니다.
           </p>
         </article>

@@ -27,7 +27,7 @@ export default function Hero() {
             />
           </h1>
           <p className="text-white text-xs sm:text-sm lg:text-lg">
-            계속해서 강회되는 노무법, 행정업무, 마케팅과 재경관리 등 힘든 영역을 대행하고
+            계속해서 강화되는 노무법, 행정업무, 마케팅과 재경관리 등 힘든 영역을 대행하고
             <br />
             창업자들의 지속 가능한 비지니스를 실현하는데 기여하고 있습니다.
           </p>
