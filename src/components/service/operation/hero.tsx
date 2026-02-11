@@ -27,7 +27,7 @@ export default function Hero() {
             />
           </h1>
           <p className="font-normal text-sm text-white md:text-lg">
-            국내외 2,400개 객실, 중소형 호텔, 관광 호텔, 펜션, 글램핑 등 다양한 생활숙박시설
+            국내·외 2,400개 객실, 중소형 호텔, 관광 호텔, 펜션, 글램핑 등 다양한 생활숙박시설
             위탁운영.
             <br />
             매출 증대, 인사, 노무, 행정, 시설 관리 등 모든 업무를 세심하고 확실하게 책임을 다 하고

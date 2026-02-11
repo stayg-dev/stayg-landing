@@ -183,12 +183,12 @@ export default function Footer() {
               <h3 className="mb-4 font-semibold text-[#d0d0d0] text-sm tracking-[0.14em]">
                 CONTACT
               </h3>
-              <p className="text-[#999999] text-sm">010-5172-7060</p>
+              <p className="text-[#999999] text-sm">02-6925-7061</p>
               <Link
                 href="mailto:kevin7060@naver.com"
                 className="mt-1 inline-block text-[#999999] text-sm transition-colors hover:text-white"
               >
-                kevin7060@naver.com
+                stayg@stayg.kr
               </Link>
             </div>
 
@@ -264,7 +264,7 @@ export default function Footer() {
                 <Image src="/icons/blog.png" alt="" width={24} height={24} />
               </Link>
               <Link
-                href="https://www.instagram.com/stay_g.kr/"
+                href="https://www.instagram.com/stayg.kr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="STAY-G instagram"
