@@ -195,7 +195,7 @@ export default function Footer() {
             <div>
               <h3 className="mb-4 font-semibold text-[#d0d0d0] text-sm tracking-[0.14em]">ABOUT</h3>
               <p className="text-[#999999] text-sm leading-relaxed">
-                효율성과 전문성의 새로운 패러다임, 생활숙박시설 위탁운영사 스테이지
+                효율성과 전문성의 새로운 패러다임, 호스피탈리티 운영사 스테이지
               </p>
             </div>
 
@@ -203,7 +203,7 @@ export default function Footer() {
               <h3 className="mb-4 font-semibold text-[#d0d0d0] text-sm tracking-[0.14em]">
                 CONTACT
               </h3>
-              <p className="text-[#999999] text-sm">02-6925-7061</p>
+              <p className="text-[#999999] text-sm">0507-1465-7060</p>
               <Link
                 href="mailto:kevin7060@naver.com"
                 className="mt-1 inline-block text-[#999999] text-sm transition-colors hover:text-white"

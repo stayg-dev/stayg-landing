@@ -20,7 +20,7 @@ export default function Hero() {
           <h1 className="flex justify-center lg:justify-start">
             <Image
               src={ContactHeroText}
-              alt="문의하기"
+              alt="24시간문의하기"
               width={3545}
               height={1000}
               className="h-5 w-auto sm:h-6 md:h-[43px]"

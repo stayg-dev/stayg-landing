@@ -36,7 +36,7 @@ export default function AboutStayG() {
               효율성과 투명성을 핵심 가치로{" "}
               <span className="font-semibold">만족을 넘어 가치를 창출</span>합니다.
             </p>
-            <p>STAY-G는 건축, 시공, 마케팅, 운영, 자산 매각까지</p>
+            <p>STAY-G는 숙박업 운영, 캠핑장 운영, 마케팅 운영, 자산 매각까지</p>
             <p>통합 서비스를 제공하는 숙박시설 전문 매니지먼트 컨설팅 기업입니다.</p>
           </div>
         </div>

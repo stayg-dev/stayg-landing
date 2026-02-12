@@ -33,7 +33,7 @@ export default function Hero() {
           </h1>
 
           <h2 className="font-extrabold text-3xl text-white lg:text-5xl">
-            위탁운영 · 무인관제 · OTA 운영대행
+            위탁운영 · OTA 운영대행
           </h2>
         </div>
 
@@ -52,7 +52,7 @@ export default function Hero() {
         {/* Description */}
         <p className="mb-5.5 max-w-2xl text-white text-xs leading-relaxed sm:text-sm md:leading-7 lg:text-lg lg:leading-8">
           <span className="font-semibold">
-            2,400여 개의 관리 객실, 평균 75% 가동률, 20년 이상 운영 경험
+            2,400여 개의 관리 객실, 평균 85% 가동률, 20년 이상 운영 경험
           </span>
           으로
           <br />

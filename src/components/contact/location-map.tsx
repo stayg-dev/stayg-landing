@@ -25,7 +25,7 @@ export default function LocationMap() {
               <p className="font-semibold text-white text-xl lg:text-[28px] lg:leading-10">
                 유선문의
               </p>
-              <p className="font-light text-sm text-white lg:text-base">02-6925-7061</p>
+              <p className="font-light text-sm text-white lg:text-base">0507-1465-7060</p>
             </div>
             <div className="px-4 py-2.5">
               <p className="font-semibold text-white text-xl lg:text-[28px] lg:leading-10">

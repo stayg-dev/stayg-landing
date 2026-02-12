@@ -56,6 +56,9 @@ const timelineData = [
       "스테이지 시스템 PMS 개발",
       "스테이지 무인관제 HiO 시스템 개발",
       "ISO 9001, 14001, 45001 인증",
+      "기업 연구소 설립",
+      "중소기업 벤처 인증 획득",
+      "특허 출원 2건",
     ],
   },
   {
@@ -95,7 +98,6 @@ const timelineData = [
     year: "2022",
     image: "/company/history/image5.webp",
     achievements: [
-      "GS건설 책임(부장)으로 퇴사",
       "호텔 그라체 브랜드 개발",
       "일산 호텔 직영 매입",
       "호텔 리모델링 시공",
@@ -103,12 +105,12 @@ const timelineData = [
     ],
   },
   {
-    year: "2020",
+    year: "2020 (대표이력)",
     image: "/company/history/image6.webp",
     achievements: ["UAE CAMP 2,000개 객실 총괄 운영 대표"],
   },
   {
-    year: "2005",
+    year: "2005 (대표이력)",
     image: "/company/history/image7.webp",
     achievements: [
       "LG그룹 건설 공채 입사",
