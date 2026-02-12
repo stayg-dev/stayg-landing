@@ -21,10 +21,10 @@ export const BRANDS_DATA = [
     description1: "게임과 힐링이 만나는 특별한 공간",
     description2: "일상에서 벗어난 나만의 시간을 경험하세요",
     photos: [
-      "/reference/ref1/1.webp",
-      "/reference/ref1/2.webp",
-      "/reference/ref1/3.webp",
-      "/reference/ref1/4.webp",
+      "/reference/ref2/1.webp",
+      "/reference/ref2/2.webp",
+      "/reference/ref2/3.webp",
+      "/reference/ref2/4.webp",
     ],
   },
   {

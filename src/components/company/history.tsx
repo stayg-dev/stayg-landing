@@ -21,6 +21,10 @@ function HistoryCard({
   yearSize = "text-4xl lg:text-6xl",
   sizes = "(max-width: 1024px) 100vw, 50vw",
 }: HistoryCardProps) {
+  const yearMatch = year.match(/^(.*?)(\s*\(.*\))$/);
+  const yearMain = yearMatch ? yearMatch[1] : year;
+  const yearSub = yearMatch ? yearMatch[2] : null;
+
   return (
     <div className={`relative overflow-hidden ${height}`}>
       <Image
@@ -33,7 +37,10 @@ function HistoryCard({
       />
       <div className="absolute inset-0 bg-black/70" />
       <div className={`relative z-10 flex h-full flex-col justify-between ${padding}`}>
-        <h3 className={`font-chosunilbo font-normal ${yearSize} ${yearColor}`}>{year}</h3>
+        <h3 className={`font-chosunilbo font-normal ${yearSize} ${yearColor}`}>
+          {yearMain}
+          {yearSub ? <span className="text-xs lg:text-base">{yearSub}</span> : null}
+        </h3>
         <ul className="flex flex-col gap-1 font-normal text-white text-xs lg:gap-3 lg:text-base">
           {achievements.map((achievement) => (
             <li key={achievement} className="flex items-start gap-2">
