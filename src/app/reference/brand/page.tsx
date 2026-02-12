@@ -12,6 +12,7 @@ export default function Brand() {
   const [expandedIndex, setExpandedIndex] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const router = useRouter();
+  const showXlControls = BRANDS_DATA.length > 6;
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
@@ -116,26 +117,29 @@ export default function Brand() {
               </div>
             </div>
 
+            {/* Prev */}
             <button
               type="button"
               onClick={scrollPrev}
-              className="absolute top-1/2 left-[3%] z-20 hidden h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center p-2 md:flex xl:hidden xl:h-10 xl:w-10"
+              className={`absolute top-1/2 left-[3%] z-20 hidden h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center p-2 md:flex xl:h-10 xl:w-10 ${!showXlControls ? "xl:hidden" : ""}`}
               aria-label="Previous slide"
             >
-              <RightArrow className="size-full -scale-x-100" />
+              <RightArrow className="size-full" style={{ transform: 'scaleX(-1)' }} />
             </button>
 
             <button
               type="button"
               onClick={scrollNext}
-              className="absolute top-1/2 right-[3%] z-20 hidden h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center p-2 md:flex xl:hidden xl:h-10 xl:w-10"
+              className={`absolute top-1/2 right-[3%] z-20 hidden h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center p-2 md:flex xl:h-10 xl:w-10 ${!showXlControls ? "xl:hidden" : ""}`}
               aria-label="Next slide"
             >
               <RightArrow className="size-full" />
             </button>
           </div>
 
-          <div className="mt-6 flex items-center justify-center gap-2 xl:hidden">
+          <div
+            className={`mt-6 flex items-center justify-center gap-2 ${!showXlControls ? "xl:hidden" : ""}`}
+          >
             {BRANDS_DATA.map((location, index) => (
               <button
                 key={`dot-${location.region}-${location.area}`}
