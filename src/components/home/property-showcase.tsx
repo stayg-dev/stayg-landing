@@ -10,43 +10,71 @@ import RightArrow from "../icons/right-arrow";
 const properties = [
   {
     id: 1,
-    image: "/home/property-showcase/image-1.webp",
+    image: "/reference/ref1/1.webp",
     tag: "위탁운영 및 리모델링",
-    location: "경기도 일산",
-    originalPrice: "5,000만원",
-    newPrice: "1억 1,100만원",
+    location: "서울 서초",
+    //originalPrice: "5,000만원",
+    //newPrice: "1억 1,100만원",
   },
   {
     id: 2,
-    image: "/home/property-showcase/image-2.webp",
+    image: "/reference/ref2/1.webp",
     tag: "위탁운영 및 리모델링",
-    location: "경기도 파주",
-    originalPrice: "6,000만원",
-    newPrice: "1억 2,000만원",
+    location: "부산 영도",
   },
   {
     id: 3,
-    image: "/home/property-showcase/image-3.webp",
+    image: "/reference/ref3/1.webp",
     tag: "위탁운영 및 리모델링",
-    location: "경기도 가평",
-    originalPrice: "2,000만원",
-    newPrice: "6,000만원",
+    location: "강원 삼척",
   },
   {
     id: 4,
-    image: "/home/property-showcase/image-4.webp",
+    image: "/reference/ref4/1.webp",
     tag: "위탁운영 및 리모델링",
-    location: "전라북도 전주",
-    originalPrice: "5,000만원",
-    newPrice: "1억 5,000만원",
+    location: "전북 전주",
   },
   {
     id: 5,
-    image: "/home/property-showcase/image-5.webp",
+    image: "/reference/ref5/1.webp",
+    tag: "위탁운영 및 리모델링",
+    location: "경기 가평",
   },
   {
     id: 6,
-    image: "/home/property-showcase/image6.webp",
+    image: "/reference/ref6/1.webp",
+    tag: "위탁운영 및 리모델링",
+    location: "경남 양산",
+  },
+  {
+    id: 7,
+    image: "/reference/ref7/1.webp",
+    tag: "위탁운영 및 리모델링",
+    location: "고양 벽제",
+  },
+  {
+    id: 8,
+    image: "/reference/ref8/1.webp",
+    tag: "위탁운영 및 리모델링",
+    location: "고양 화정",
+  },
+  {
+    id: 9,
+    image: "/reference/ref9/1.webp",
+    tag: "위탁운영 및 리모델링",
+    location: "충남 서산",
+  },
+  {
+    id: 10,
+    image: "/reference/ref10/1.webp",
+    tag: "위탁운영 및 리모델링",
+    location: "파주 금촌",
+  },
+  {
+    id: 11,
+    image: "/reference/ref11/1.webp",
+    tag: "위탁운영 및 리모델링",
+    location: "파주 탄현",
   },
 ];
 
@@ -150,7 +178,7 @@ export default function PropertyShowcase() {
                             </h3>
 
                             {/* Price Row */}
-                            <div className="flex items-center gap-2">
+                            {/*<div className="flex items-center gap-2">
                               <span className="font-light text-neutral-200 text-xs sm:text-base lg:text-lg">
                                 {property.originalPrice}
                               </span>
@@ -158,7 +186,7 @@ export default function PropertyShowcase() {
                               <span className="font-bold text-amber-200 text-sm sm:text-lg lg:text-xl">
                                 {property.newPrice}
                               </span>
-                            </div>
+                            </div>*/}
                           </div>
                         )}
 
