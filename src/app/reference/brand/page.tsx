@@ -26,6 +26,10 @@ export default function Brand() {
     if (emblaApi) emblaApi.goToNext();
   }, [emblaApi]);
 
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.goToPrev();
+  }, [emblaApi]);
+
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedSnap());
@@ -111,6 +115,15 @@ export default function Brand() {
                 })}
               </div>
             </div>
+
+            <button
+              type="button"
+              onClick={scrollPrev}
+              className="absolute top-1/2 left-[3%] z-20 hidden h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center p-2 md:flex xl:hidden xl:h-10 xl:w-10"
+              aria-label="Previous slide"
+            >
+              <RightArrow className="size-full -scale-x-100" />
+            </button>
 
             <button
               type="button"
