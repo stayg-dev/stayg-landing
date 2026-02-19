@@ -9,6 +9,7 @@ interface HistoryCardProps {
   padding?: string;
   yearSize?: string;
   sizes?: string;
+  achievementsColumns?: 1 | 2;
 }
 
 function HistoryCard({
@@ -20,6 +21,7 @@ function HistoryCard({
   padding = "p-6 lg:p-13",
   yearSize = "text-4xl lg:text-6xl",
   sizes = "(max-width: 1024px) 100vw, 50vw",
+  achievementsColumns = 1,
 }: HistoryCardProps) {
   const yearMatch = year.match(/^(.*?)(\s*\(.*\))$/);
   const yearMain = yearMatch ? yearMatch[1] : year;
@@ -41,7 +43,11 @@ function HistoryCard({
           {yearMain}
           {yearSub ? <span className="text-xs lg:text-base">{yearSub}</span> : null}
         </h3>
-        <ul className="flex flex-col gap-1 font-normal text-white text-xs lg:gap-3 lg:text-base">
+        <ul
+          className={`font-normal text-white text-xs lg:text-base ${
+            achievementsColumns === 2 ? "grid grid-cols-1 gap-1 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-3" : "flex flex-col gap-1 lg:gap-3"
+          }`}
+        >
           {achievements.map((achievement) => (
             <li key={achievement} className="flex items-start gap-2">
               <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-white" />
@@ -160,7 +166,7 @@ export default function History() {
         {/* Header Section */}
         <div className="mb-8 text-center lg:mb-21">
           <p className="font-light text-[#474747] text-base md:text-lg lg:text-[28px]">
-            업무표준화, 품질평가제, 전문인력, 전문 하자대응팀으로
+            업무표준화, 품질평가제, 전문인력, 하자대응팀으로
           </p>
           <p className="font-light text-[#474747] text-base md:text-lg lg:text-[28px]">
             <span className="font-bold">숙박 시설 위탁 운영의 미래</span>를 만들어 갑니다.
@@ -185,21 +191,14 @@ export default function History() {
           {pairedItems.map((pair) => (
             <div key={pair[0].year} className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-6">
               {pair.map((item) => {
-                let heightClass = "h-85 lg:h-132.75";
-                if (item.year === "2023" || item.year === "2022") {
-                  heightClass = "h-62.5 lg:h-97.5";
-                }
-                if (item.year === "2020" || item.year === "2005") {
-                  heightClass = "h-65 lg:h-106.5";
-                }
-
                 return (
                   <HistoryCard
                     key={item.year}
                     year={item.year}
-                    height={heightClass}
+                    height="h-85 lg:h-106.5"
                     image={item.image}
                     achievements={item.achievements}
+                    achievementsColumns={item.year === "2025" ? 2 : 1}
                     padding="p-6 lg:p-13"
                     yearSize="text-4xl lg:text-6xl"
                   />

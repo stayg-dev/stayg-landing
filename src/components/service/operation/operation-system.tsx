@@ -12,14 +12,14 @@ const services = [
     id: 2,
     title: "고객 응대 매뉴얼",
     description1: "돌발 상황 발생 시 실시간 커뮤니케이션으로",
-    description2: "즉각적 빠른 대처를 통해 변수를 최소화 합니다.",
+    description2: "즉각적 대처를 통해 변수를 최소화 합니다.",
     image: "/service/operation/image2.webp",
   },
   {
     id: 3,
     title: "하우스키핑 교육",
-    description1: "호텔 급 전문 프로세스의 하우스키핑 교육 시스템으로",
-    description2: "객실의 컨디션과 고객 만족도를 최상으로 관리합니다.",
+    description1: "호텔급 표준을 적용한 하우스키핑 교육 시스템으로",
+    description2: "객실 품질과 고객 만족을 체계적으로 관리합니다.",
     image: "/service/operation/image3.webp",
   },
   {
@@ -32,22 +32,22 @@ const services = [
   {
     id: 5,
     title: "OTA 세팅 및 예약 관리",
-    description1: "중복 예약 방지를 위한 사전 세팅, 성수기, 비수기 세팅 까지",
-    description2: "완벽하게 관리합니다.",
+    description1: "오버부킹, 중복예약 방지를 위한",
+    description2: "사전 세팅, 미리 예약, 성/비수기 세팅까지 체크합니다.",
     image: "/service/operation/image5.webp",
   },
   {
     id: 6,
     title: "시설 정기 점검",
     description1: "수도, 전기, 가스, 엘리베이터, 가전, 가구 등",
-    description2: "정기적인 사전 점검을 통해 시설의 감가를 최소화 합니다.",
+    description2: "정기적인 시설 점검을 통해 원가/감가를 최소화 합니다.",
     image: "/service/operation/image6.webp",
   },
   {
     id: 7,
     title: "최다 검색, 상위 노출 홍보 마케팅",
-    description1: "검색 노출 마케팅, 각종 OTA, SNS 플랫폼에서",
-    description2: "유료 광고 마케팅을 전략적으로 운영합니다.",
+    description1: "SA·DA 광고부터 각종 OTA, SNS 플랫폼에서",
+    description2: "각 플랫폼 특성에 맞춘 전략으로 상위 노출을 설계합니다.",
     image: "/service/operation/image7.webp",
   },
   {
@@ -69,7 +69,7 @@ export default function OperationSystem() {
             STAY-G 위탁 운영 시스템
           </h2>
           <div className="font-light text-[#474747] text-sm leading-tight md:text-base lg:text-[22px]">
-            <p>STAY-G는 매출이 탄탄한 숙박시설 만들어 드립니다.</p>
+            <p>매출이 탄탄한 숙박시설 만들어 드립니다.</p>
             <p>판매 채널 별 매출을 일 단위로 정확히 기록하고</p>
             <p>실시간 커뮤니케이션으로 24시간 빠르게 대응합니다.</p>
           </div>
