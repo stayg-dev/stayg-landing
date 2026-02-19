@@ -18,13 +18,13 @@ const solutions = [
   {
     id: 3,
     title: "마케팅",
-    description: "각종 OTA 최다 노출,\n판매채널 관리 공격적인 SNS",
+    description: "각종 OTA 최다 노출,\n판매채널 관리, 공격적인 SNS",
     image: "/home/revenue-growth/image-3.webp",
   },
   {
     id: 4,
     title: "운영 전략 기획",
-    description: "전문경영인의 지속적인 분석 및\n매출 극대화",
+    description: "전문경영인의 지속적인\n분석 및 매출 극대화",
     image: "/home/revenue-growth/image-4.webp",
   },
 ];

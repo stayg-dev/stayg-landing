@@ -91,8 +91,12 @@ export default function BusinessConcerns() {
               <div className="hidden h-8.5 w-px bg-white/30 md:block" />
 
               {/* Description */}
-              <p className="whitespace-pre-line text-center font-light text-sm text-white leading-6 md:text-start md:text-base">
-                {concern.description}
+              <p className="text-center font-light text-sm text-white leading-6 md:text-start md:text-base">
+                {concern.description.split("\n")[0]}
+                <br />
+                <span className="font-semibold text-[#F2D1A4]">
+                  {concern.description.split("\n")[1]}
+                </span>
               </p>
             </div>
           ))}

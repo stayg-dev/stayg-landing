@@ -65,9 +65,9 @@ export default function Hero() {
           className="group inline-flex h-11 items-center justify-center gap-2 border border-white bg-[#333a42b3] py-3 pr-4 pl-6 font-normal text-sm text-white"
           data-umami-event="cta_click"
           data-umami-event-location="hero"
-          data-umami-event-label="지금 바로 상담받으세요"
+          data-umami-event-label="부담없는 운영상담"
         >
-          <span>지금 바로 상담받으세요</span>
+          <span>부담없는 운영상담</span>
           <ChevronRight size={20} />
         </Link>
       </div>

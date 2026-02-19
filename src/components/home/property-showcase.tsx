@@ -94,6 +94,10 @@ export default function PropertyShowcase() {
     if (emblaApi) emblaApi.goToNext();
   }, [emblaApi]);
 
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.goToPrev();
+  }, [emblaApi]);
+
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedSnap());
@@ -206,16 +210,6 @@ export default function PropertyShowcase() {
                 ))}
               </div>
             </div>
-
-            {/* Navigation Arrow Button */}
-            <button
-              type="button"
-              onClick={scrollNext}
-              className="absolute top-1/2 right-[10%] z-20 hidden h-5 w-5 -translate-y-1/2 cursor-pointer items-center justify-center md:right-[21%] md:flex lg:right-[9.5%] xl:right-[15%] xl:h-8 xl:w-8 2xl:right-[16%]"
-              aria-label="Next slide"
-            >
-              <RightArrow className="size-full" />
-            </button>
           </div>
 
           {/* Dot Indicators */}
