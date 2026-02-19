@@ -12,6 +12,7 @@ import { Checkbox } from "../ui/checkbox";
 import { Input } from "../ui/input";
 import { PhoneInput } from "../ui/phone-input";
 import { PrivacyPolicyPopup } from "../ui/privacy-policy-popup";
+import Logo from "@/assets/logo.svg";
 
 const formSchema = z.object({
   name: z.string().nonempty(""),
@@ -88,9 +89,9 @@ export default function Footer() {
                 <span className="hidden lg:block">
                   24시간
                   <br />
-                  문의하기
+                  문의
                 </span>
-                <span className="block lg:hidden">24시간 문의하기</span>
+                <span className="block lg:hidden">24시간 문의</span>
               </h2>
             </div>
 
@@ -188,7 +189,7 @@ export default function Footer() {
       <div className="bg-[#1f2124] py-12 text-white">
         <div className="mx-auto max-w-7xl px-4 md:px-9">
           <div className="border-white/10 border-b pb-6">
-            <Image src="/uploads/2024/10/stayglogo.png" alt="STAY-G" width={100} height={27} />
+            <Image src={Logo} alt="STAY-G" width={100} height={27} />
           </div>
 
           <div className="grid grid-cols-1 gap-10 border-white/10 border-b py-8 md:grid-cols-3">
