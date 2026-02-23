@@ -209,7 +209,7 @@ export default function Footer() {
                 href="mailto:kevin7060@naver.com"
                 className="mt-1 inline-block text-[#999999] text-sm transition-colors hover:text-white"
               >
-                stayg@stayg.kr
+                kevin7060@naver.com
               </Link>
             </div>
 
