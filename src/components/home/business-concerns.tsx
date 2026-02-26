@@ -146,7 +146,7 @@ export default function BusinessConcerns() {
               <div className="hidden h-8.5 w-px bg-white/30 md:block" />
 
               <p className="text-center font-light text-sm text-white leading-6 md:text-start md:text-base">
-                {isEn ? (
+                {"description" in concern ? (
                   concern.description
                 ) : (
                   <>
