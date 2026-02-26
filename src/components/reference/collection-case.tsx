@@ -5,10 +5,12 @@ import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import RightArrow from "@/components/icons/right-arrow";
+import { useLocale } from "@/components/providers/locale-provider";
 import { BRANDS_DATA } from "@/lib/reference-data";
-import RightArrow from "../icons/right-arrow";
 
 export default function CollectionCase() {
+  const { locale } = useLocale();
   const params = useSearchParams();
   const buildingId = params.get("buildingId");
   const initialIndex = buildingId ? BRANDS_DATA.findIndex((item) => item.id === buildingId) : 0;
@@ -60,7 +62,6 @@ export default function CollectionCase() {
 
   return (
     <>
-      {/* Top: Location cards */}
       <section className="bg-white py-10 lg:py-25">
         <div className="mx-auto max-w-7xl px-2.5 md:px-9">
           <div className="relative">
@@ -70,7 +71,7 @@ export default function CollectionCase() {
                   const isActive = expandedIndex === index;
                   return (
                     <div
-                      key={`carousel-${location.region}-${location.area}`}
+                      key={`carousel-${location.region.ko}-${location.area.ko}`}
                       className={`h-80 w-full shrink-0 pr-4 transition-[width] duration-500 sm:h-100 lg:h-160 lg:w-[calc(100%/3)] ${
                         isActive
                           ? "w-full lg:w-[calc(200%/4)] xl:w-[calc(200%/7)]"
@@ -86,7 +87,7 @@ export default function CollectionCase() {
                       >
                         <Image
                           src={location.image}
-                          alt={`${location.region} ${location.area}`}
+                          alt={`${location.area[locale]}, ${location.region[locale]}`}
                           fill
                           loading="lazy"
                           sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 30vw"
@@ -95,18 +96,16 @@ export default function CollectionCase() {
                         <div className="absolute inset-0 bg-linear-to-b from-black/0 via-black/35 to-black" />
                         <div className="relative flex flex-col gap-4 p-6 lg:gap-6 lg:p-8">
                           <div className="flex flex-col gap-1 lg:gap-2">
-                            <span
-                              className={`font-semibold text-lg text-white ${isActive ? "lg:text-2xl" : "lg:text-[22px]"}`}
-                            >
-                              {location.region}
+                            <span className="font-semibold text-lg text-white lg:text-[22px]">
+                              {location.region[locale]}
                             </span>
                             <span className="font-semibold text-sm text-white lg:text-base">
-                              {location.area}
+                              {location.area[locale]}
                             </span>
                           </div>
                           <div className="inline-flex items-center">
-                            <span className="font-normal text-white underline underline-offset-2 lg:text-sm">
-                              자세히 보기
+                            <span className="whitespace-nowrap font-normal text-white text-xs underline underline-offset-2 lg:text-sm">
+                              {locale === "en" ? "View details" : "자세히 보기"}
                             </span>
                             <ChevronRight size={20} className="text-white" />
                           </div>
@@ -118,17 +117,15 @@ export default function CollectionCase() {
               </div>
             </div>
 
-            {/* Prev */}
             <button
               type="button"
               onClick={scrollPrev}
               className={`absolute top-1/2 left-[3%] z-20 hidden h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center p-2 md:flex xl:h-10 xl:w-10 ${!showXlControls ? "xl:hidden" : ""}`}
               aria-label="Previous slide"
             >
-              <RightArrow className="size-full" style={{ transform: 'scaleX(-1)' }} />
+              <RightArrow className="size-full" style={{ transform: "scaleX(-1)" }} />
             </button>
 
-            {/* Next */}
             <button
               type="button"
               onClick={scrollNext}
@@ -139,13 +136,12 @@ export default function CollectionCase() {
             </button>
           </div>
 
-          {/* Dot indicators */}
           <div
             className={`mt-6 flex items-center justify-center gap-2 ${!showXlControls ? "xl:hidden" : ""}`}
           >
             {BRANDS_DATA.map((location, index) => (
               <button
-                key={`dot-${location.region}-${location.area}`}
+                key={`dot-${location.region.ko}-${location.area.ko}`}
                 type="button"
                 onClick={() => {
                   emblaApi?.goTo(index);
@@ -160,26 +156,25 @@ export default function CollectionCase() {
         </div>
       </section>
 
-      {/* Bottom: Detail view */}
       <section className="bg-neutral-100 py-6 sm:py-10 lg:py-25">
         <div className="mx-auto flex max-w-7xl flex-col gap-10 px-2.5 md:px-9">
           <div className="flex flex-col gap-4 lg:gap-6">
             <h2 className="font-semibold text-logo-gradient text-xl lg:text-[28px]">
-              {active.region} {active.area}
+              {active.area[locale]}, {active.region[locale]}
             </h2>
             <p className="font-light text-[#474747] text-base lg:text-[22px]">
-              {active.description1} <br /> {active.description2}
+              {active.description1[locale]} <br /> {active.description2[locale]}
             </p>
           </div>
           <div className="flex flex-col gap-4 lg:gap-6">
             {active.photos.map((photo, i) => (
               <div
-                key={`${active.area}-photo-${i}`}
+                key={`${active.area.ko}-photo-${i}`}
                 className="group relative aspect-video w-full overflow-hidden"
               >
                 <Image
                   src={photo}
-                  alt={`${active.region} ${active.area} 사진 ${i + 1}`}
+                  alt={`${active.area[locale]}, ${active.region[locale]} ${locale === "en" ? "photo" : "사진"} ${i + 1}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 1240px"
                   className="object-cover"
