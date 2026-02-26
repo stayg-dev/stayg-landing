@@ -23,7 +23,7 @@ function getFooterInquiryCopy(locale: "ko" | "en") {
       phonePlaceholder: "010-0000-0000",
       emailLabel: "Email Address",
       emailPlaceholder: "Please enter your email.",
-      submitLabel: "Submit Online Inquiry",
+      submitLabel: "Submit Online",
       submittingLabel: "Submitting...",
       agreedLabel: "I agree to the collection and use of personal information.",
       privacyDetail:
@@ -198,7 +198,7 @@ export default function FooterInquiry() {
                     className="h-12 w-full cursor-pointer bg-white px-4 font-bold text-black text-sm transition-opacity disabled:cursor-not-allowed lg:w-45"
                     disabled={!(isDirty && isValid) || isSubmitting}
                   >
-                    {isSubmitting ? copy.submittingLabel : `[ ${copy.submitLabel} ]`}
+                    {isSubmitting ? copy.submittingLabel : `${copy.submitLabel}`}
                   </button>
                 </div>
               </div>

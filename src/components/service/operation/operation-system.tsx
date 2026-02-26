@@ -160,9 +160,18 @@ const content = {
       {
         id: 9,
         title: "High-Exposure Digital Marketing",
-        description1: "From Search Ads (SA) and",
-        description2: "",
+        description1: "From Search Ads (SA) and Display Ads (DA) to OTA and SNS platforms,",
+        description2:
+          "we design high-exposure campaigns tailored to each platform's characteristics.",
         image: "/service/operation/image9.webp",
+      },
+      {
+        id: 10,
+        title: "Top-Tier Experts in Management, Labor, Tax, and Legal Affairs",
+        description1:
+          "With efficient operational workflows and tailored strategy planning for hospitality assets,",
+        description2: "we deliver stronger revenue and long-term profitability.",
+        image: "/service/operation/image10.webp",
       },
     ],
   },
@@ -200,11 +209,25 @@ export default function OperationSystem() {
 
               <div className="absolute inset-0 bg-black/20" />
 
-              <div className="absolute bottom-0 left-0 flex w-full flex-col justify-center bg-stone-700 p-4 md:p-6 lg:pr-2 lg:pl-12.75 xl:py-10">
-                <h3 className="mb-3 font-semibold text-lg text-white lg:text-[26px]">
+              <div
+                className={`absolute bottom-0 left-0 flex w-full flex-col justify-center bg-stone-700 p-4 md:p-6 lg:pr-2 lg:pl-12.75 xl:py-10 ${
+                  locale === "en" ? "h-44 overflow-hidden md:h-48 lg:h-52" : ""
+                }`}
+              >
+                <h3
+                  className={`mb-3 font-semibold text-white ${
+                    locale === "en" ? "text-base lg:text-[24px]" : "text-lg lg:text-[26px]"
+                  }`}
+                >
                   {service.title}
                 </h3>
-                <div className="font-light text-sm text-white leading-relaxed lg:text-xl lg:leading-7">
+                <div
+                  className={`font-light text-white leading-relaxed ${
+                    locale === "en"
+                      ? "text-sm lg:text-lg lg:leading-6"
+                      : "text-sm lg:text-xl lg:leading-7"
+                  }`}
+                >
                   <p>{service.description1}</p>
                   {service.description2 ? <p>{service.description2}</p> : null}
                 </div>
