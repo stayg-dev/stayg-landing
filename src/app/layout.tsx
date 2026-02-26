@@ -4,9 +4,10 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
+import { NavigationTracker } from "@/components/analytics/navigation-tracker";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
-import { NavigationTracker } from "@/components/analytics/navigation-tracker";
+import { LocaleProvider } from "@/components/providers/locale-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,20 +51,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
             height="0"
             width="0"
+            title="Google Tag Manager"
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        <Header />
-        {children}
-        <Footer />
-        <NavigationTracker />
-        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
-          <Script
-            src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
-            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-            strategy="afterInteractive"
-          />
-        )}
+        <LocaleProvider>
+          <Header />
+          {children}
+          <Footer />
+          <NavigationTracker />
+          {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+            <Script
+              src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
+              data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+              strategy="afterInteractive"
+            />
+          )}
+        </LocaleProvider>
       </body>
     </html>
   );

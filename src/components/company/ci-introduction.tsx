@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Logo1 from "@/assets/company/ci-introduction/logo1.svg";
 import Logo2 from "@/assets/company/ci-introduction/logo2.svg";
 import Logo3 from "@/assets/company/ci-introduction/logo3.svg";
 import Logo4 from "@/assets/company/ci-introduction/logo4.svg";
+import { useLocale } from "@/components/providers/locale-provider";
 
 const CI_LOGOS = [
   {
@@ -28,9 +31,11 @@ const CI_LOGOS = [
 ];
 
 export default function CIIntroduction() {
+  const { locale } = useLocale();
+  const isEn = locale === "en";
+
   return (
     <section className="relative flex min-h-150 flex-col items-center justify-center overflow-hidden py-16 md:min-h-190 md:py-30">
-      {/* Background Image */}
       <Image
         src="/company/ci-introduction-bg.webp"
         alt="CI Introduction Background"
@@ -40,24 +45,30 @@ export default function CIIntroduction() {
         className="object-cover"
       />
 
-      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-neutral-900/40" />
 
-      {/* Content */}
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-8 px-2.5 md:px-9 lg:gap-10.5">
-        {/* Header */}
         <div className="flex flex-col items-center gap-4 lg:gap-5">
           <h2 className="text-center font-chosunilbo text-3xl text-white lg:text-[43px]">
-            CI 소개
+            {isEn ? "CI Introduction" : "CI 소개"}
           </h2>
           <p className="text-center font-light text-sm text-white leading-5.5 lg:text-base">
-            STAY-G 아이덴티티를 일관성 있게 표현하고
-            <br />
-            첨단 IT 분야의 스마트 기술을 시각화한 시작점입니다.
+            {isEn ? (
+              <>
+                STAY-G expresses a consistent visual identity.
+                <br />
+                It is the starting point that visualizes smart technology in advanced IT domains.
+              </>
+            ) : (
+              <>
+                STAY-G 아이덴티티를 일관성 있게 표현하고
+                <br />
+                첨단 IT 분야의 스마트 기술을 시각화한 시작점입니다.
+              </>
+            )}
           </p>
         </div>
 
-        {/* Logo Display Area */}
         <div className="w-full max-w-7xl bg-black/50 px-6 py-10 md:px-10 md:py-12 lg:px-14 lg:py-14">
           <div className="grid grid-cols-2 gap-8 md:gap-10 lg:grid-cols-4 lg:gap-12">
             {CI_LOGOS.map((logo) => (
