@@ -4,26 +4,34 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocale } from "@/components/providers/locale-provider";
+import { BRANDS_DATA } from "@/lib/reference-data";
 
-const properties = [
-  { id: 1, image: "/reference/ref1/1.webp", location: "서울 서초" },
-  { id: 2, image: "/reference/ref2/1.webp", location: "부산 영도" },
-  { id: 3, image: "/reference/ref3/1.webp", location: "강원 삼척" },
-  { id: 4, image: "/reference/ref4/1.webp", location: "전북 전주" },
-  { id: 5, image: "/reference/ref5/1.webp", location: "경기 가평" },
-  { id: 6, image: "/reference/ref6/1.webp", location: "경남 양산" },
-  { id: 7, image: "/reference/ref7/1.webp", location: "고양 벽제" },
-  { id: 8, image: "/reference/ref8/1.webp", location: "고양 화정" },
-  { id: 9, image: "/reference/ref9/1.webp", location: "충남 서산" },
-  { id: 10, image: "/reference/ref10/1.webp", location: "파주 금촌" },
-  { id: 11, image: "/reference/ref11/1.webp", location: "파주 탄현" },
-] as const;
+const copy = {
+  ko: {
+    title: "대표 운영 숙박 시설",
+    descriptionLines: [
+      "실제 운영하고 있는 일부 사례입니다.",
+      "더 많은 사례는 계속해서 업데이트 중에 있습니다.",
+    ],
+    tag: "위탁운영 및 리모델링",
+    details: "자세히 보기",
+  },
+  en: {
+    title: "Representative Properties Under Management",
+    descriptionLines: [
+      "Here are selected examples of properties currently under our operation.",
+      "More case studies are continuously being updated.",
+    ],
+    tag: "Asset Management & Remodeling",
+    details: "View details",
+  },
+} as const;
 
 export default function PropertyShowcase() {
   const { locale } = useLocale();
-  const isEn = locale === "en";
+  const text = copy[locale];
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
@@ -35,6 +43,19 @@ export default function PropertyShowcase() {
   });
 
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const properties = useMemo(
+    () =>
+      BRANDS_DATA.map((brand, index) => ({
+        id: index + 1,
+        image: brand.image,
+        location:
+          locale === "en"
+            ? `${brand.area.en}, ${brand.region.en}`
+            : `${brand.region.ko} ${brand.area.ko}`,
+      })),
+    [locale],
+  );
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -65,23 +86,12 @@ export default function PropertyShowcase() {
         <div className="flex flex-col gap-5 text-center md:shrink-0 md:text-start">
           <div className="flex flex-col">
             <h2 className="font-semibold text-white text-xl lg:text-[28px]">STAY-G</h2>
-            <p className="font-semibold text-white text-xl lg:text-[28px]">
-              {isEn ? "Representative Properties Under Management" : "대표 운영 숙박 시설"}
-            </p>
+            <p className="font-semibold text-white text-xl lg:text-[28px]">{text.title}</p>
           </div>
           <div className="max-w-full text-sm text-white leading-[140%] md:max-w-57 lg:text-base">
-            {isEn ? (
-              <>
-                <p>Here are selected examples of properties currently under our operation.</p>
-                <p>More case studies are continuously being updated.</p>
-              </>
-            ) : (
-              <>
-                <p>실제 운영하고 있는 일부 사례입니다.</p>
-                <p>더 많은 사례는</p>
-                <p>계속해서 업데이트 중에 있습니다.</p>
-              </>
-            )}
+            {text.descriptionLines.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
           </div>
         </div>
 
@@ -112,7 +122,7 @@ export default function PropertyShowcase() {
 
                       <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1 p-4 sm:p-8 lg:p-10 xl:gap-4 xl:p-15">
                         <span className="w-fit rounded-full border border-white bg-black/30 px-1.5 py-1 text-[10px] text-white xl:px-2.5 xl:text-sm">
-                          {isEn ? "Asset Management & Remodeling" : "위탁운영 및 리모델링"}
+                          {text.tag}
                         </span>
 
                         <div className="space-y-1 xl:space-y-2">
@@ -125,7 +135,7 @@ export default function PropertyShowcase() {
                           href="/reference/collection"
                           className="flex w-fit items-center gap-1.5 border border-white bg-neutral-900/70 py-2 pr-3 pl-4 text-white text-xs transition-colors hover:bg-neutral-900/90 sm:py-3 sm:pr-4 sm:pl-6 sm:text-sm"
                         >
-                          {isEn ? "View details" : "자세히 보기"}
+                          <span className="whitespace-nowrap">{text.details}</span>
                           <ChevronRight className="h-4 w-4" />
                         </Link>
                       </div>

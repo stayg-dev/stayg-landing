@@ -31,14 +31,14 @@ const content = {
         title: "전통 숙박업 운영 (호텔, 모텔, 생활형숙박시설)",
         description1: "직접 운영 경험을 기반으로 입지 상권 고객을 정밀 분석합니다.",
         description2: "매출 정상화부터 수익 고도화까지 구조적으로 개선합니다.",
-        image: "/service/operation/image3.jpg",
+        image: "/service/operation/image4.jpg",
       },
       {
         id: 4,
         title: "트렌드형 숙박시설 운영",
         description1: "이용객 니즈와 SNS 흐름을 분석해 수익 구조를 재설계합니다.",
         description2: "시즌 편차를 줄이고 경험 중심 매출을 만들어냅니다.",
-        image: "/service/operation/image4.jpg",
+        image: "/service/operation/image3.jpg",
       },
       {
         id: 5,
@@ -115,7 +115,7 @@ const content = {
           "Based on hands-on operational experience, we conduct precise analysis of location, trade area, and customer segments.",
         description2:
           "From revenue normalization to structural profit enhancement, we drive systematic improvements.",
-        image: "/service/operation/image3.jpg",
+        image: "/service/operation/image4.jpg",
       },
       {
         id: 4,
@@ -123,7 +123,7 @@ const content = {
         description1:
           "By analyzing customer needs and social media trends, we redesign revenue structures.",
         description2: "We reduce seasonal volatility and create experience-driven income streams.",
-        image: "/service/operation/image4.jpg",
+        image: "/service/operation/image3.jpg",
       },
       {
         id: 5,

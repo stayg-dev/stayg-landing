@@ -3,21 +3,36 @@
 import type { Route } from "next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLocale } from "@/components/providers/locale-provider";
 
 interface Tab {
   no: number;
   id: string;
-  label: string;
   href: Route;
+  label: {
+    ko: string;
+    en: string;
+  };
 }
 
 const tabs: Tab[] = [
-  { no: 1, id: "brand", label: "STAY-G 브랜드", href: "/reference/brand" as Route },
-  { no: 2, id: "collection", label: "사례 모음", href: "/reference/collection" as Route },
+  {
+    no: 1,
+    id: "brand",
+    href: "/reference/brand" as Route,
+    label: { ko: "STAY-G 브랜드", en: "STAY-G Brand" },
+  },
+  {
+    no: 2,
+    id: "collection",
+    href: "/reference/collection" as Route,
+    label: { ko: "사례 모음", en: "Project Portfolio" },
+  },
 ];
 
 export default function ReferenceSubheader() {
   const pathname = usePathname();
+  const { locale } = useLocale();
 
   return (
     <div className="h-12 w-full bg-background">
@@ -35,7 +50,7 @@ export default function ReferenceSubheader() {
                       : "text-[#BBB] hover:text-white"
                   }`}
                 >
-                  {tab.no}. {tab.label}
+                  {tab.no}. {tab.label[locale]}
                 </Link>
               </li>
             );
