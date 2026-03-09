@@ -31,7 +31,7 @@ export default function LocationMap() {
               <p className="font-semibold text-white text-xl lg:text-[28px] lg:leading-10">
                 이메일 문의
               </p>
-              <p className="font-light text-sm text-white lg:text-base">stayg@stayg.kr</p>
+              <p className="font-light text-sm text-white lg:text-base">kevin7060@naver.com</p>
             </div>
           </div>
         </div>
