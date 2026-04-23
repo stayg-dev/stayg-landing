@@ -28,6 +28,12 @@ const tabs: Tab[] = [
     href: "/reference/collection" as Route,
     label: { ko: "사례 모음", en: "Project Portfolio" },
   },
+  {
+    no: 3,
+    id: "cheongsong-hanok",
+    href: "/reference/cheongsong-hanok" as Route,
+    label: { ko: "청송 한옥호텔 안", en: "Cheongsong Hanok Plan" },
+  },
 ];
 
 export default function ReferenceSubheader() {
@@ -36,8 +42,8 @@ export default function ReferenceSubheader() {
 
   return (
     <div className="h-12 w-full bg-background">
-      <nav className="flex h-full items-center justify-center">
-        <ul className="flex items-center gap-8 md:gap-16 lg:gap-30">
+      <nav className="flex h-full items-center overflow-x-auto px-2">
+        <ul className="mx-auto flex shrink-0 items-center gap-4 whitespace-nowrap md:gap-12 lg:gap-30">
           {tabs.map((tab) => {
             const isActive = pathname === tab.href || pathname.startsWith(`${tab.href}/`);
             return (
