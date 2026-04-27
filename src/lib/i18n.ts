@@ -28,7 +28,7 @@ export const MESSAGES: Record<Locale, { header: HeaderMessages }> = {
       nav: {
         company: "회사정보",
         service: "사업분야",
-        hio: "HiO",
+        hio: "무인관제 & OTA 운영대행",
         reference: "REFERENCE",
         userGuide: "이용가이드",
       },
@@ -43,7 +43,7 @@ export const MESSAGES: Record<Locale, { header: HeaderMessages }> = {
       nav: {
         company: "About Us",
         service: "Business Areas",
-        hio: "HiO",
+        hio: "Unmanned Control & OTA Ops",
         reference: "Reference",
         userGuide: "User Guide",
       },

@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function HioPage() {
+export default function UnmannedOtaPage() {
   redirect("/unmanned-ota/unmanned");
 }

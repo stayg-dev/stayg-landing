@@ -18,7 +18,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { key: "company", href: "/company" as Route },
   { key: "service", href: "/service/operation" as Route },
-  { key: "hio", href: "/hio" as Route },
+  { key: "hio", href: "/unmanned-ota/unmanned" as Route },
   { key: "reference", href: "/reference/brand" as Route },
   { key: "userGuide", href: "/user-guide" as Route },
 ];
@@ -95,7 +95,7 @@ export default function Header() {
                     <li key={item.key}>
                       <Link
                         href={item.href}
-                        className={`text-sm transition-colors duration-200 ${
+                        className={`whitespace-nowrap text-sm transition-colors duration-200 ${
                           isActive
                             ? "font-extrabold text-[#f2f2f2]"
                             : "font-semibold text-[#a3a3a3] hover:text-[#f2f2f2]"
