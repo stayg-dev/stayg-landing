@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ArrowRight,
   BarChart3,
@@ -14,6 +16,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Link from "next/link";
+import { useLocale } from "@/components/providers/locale-provider";
 
 type IconComponent = typeof MonitorCheck;
 
@@ -40,11 +43,13 @@ type LandingContent = {
   titleHighlight: string;
   titleSuffix: string;
   lead: string;
+  coreLabel?: string;
   factors: FeatureItem[];
   factorNote: string;
   quote: string;
   problemKicker: string;
   problemTitle: string;
+  problemLead?: string;
   problems: FeatureItem[];
   systemKicker: string;
   systemTitle: string;
@@ -338,6 +343,278 @@ export const otaPageContent: LandingContent = {
   ctaLabel: "OTA 운영 진단 받기",
 };
 
+export const unmannedPageContentEn: LandingContent = {
+  kicker: "UNMANNED CONTROL",
+  titlePrefix: "The core of unmanned operations",
+  titleHighlight: "is not detection, but response",
+  titleSuffix: ".",
+  lead: "HiO Unmanned Control monitors inquiries, check-in exceptions, and safety issues that occur during night and unmanned hours, responds in real time, and records every step to keep service quality consistent.",
+  coreLabel: "Core operating elements",
+  factors: [
+    {
+      label: "MODE",
+      title: "24/7 remote coverage",
+      body: "Cover operational blind spots during unattended hours.",
+      icon: MonitorCheck,
+    },
+    {
+      label: "RESPONSE",
+      title: "Real-time response",
+      body: "Review inquiries and exceptions, then respond immediately.",
+      icon: Headphones,
+    },
+    {
+      label: "SYSTEM",
+      title: "PMS records",
+      body: "Record the process and result as operational history.",
+      icon: ClipboardCheck,
+    },
+    {
+      label: "REPORT",
+      title: "Operation reports",
+      body: "Organize recurring issues and improvement tasks with data.",
+      icon: BarChart3,
+    },
+  ],
+  factorNote:
+    "Inquiries, check-in exceptions, and safety issues are reviewed and handled in real time, then connected to records and reports.",
+  quote:
+    "Unmanned control reduces blind spots during unattended hours and keeps response and record standards consistent.",
+  problemKicker: "OPERATION GAPS",
+  problemTitle: "Problems that actually occur in unmanned operations",
+  problemLead:
+    "Small exceptions in guest communication and on-site operations need to become clear operating standards.",
+  problems: [
+    {
+      label: "PROBLEM",
+      title: "Delayed night inquiries",
+      body: "Reservation, check-in, and facility questions can quickly damage the guest experience when they are not handled right away.",
+      icon: MessageSquare,
+    },
+    {
+      label: "PROBLEM",
+      title: "Check-in exceptions",
+      body: "Self check-in errors and room assignment issues can drag on without a clear remote response process.",
+      icon: Home,
+    },
+    {
+      label: "PROBLEM",
+      title: "Missing handoffs",
+      body: "If night-time actions are not passed to the next shift, the same issues repeat.",
+      icon: ClipboardCheck,
+    },
+    {
+      label: "PROBLEM",
+      title: "Quality variance",
+      body: "Response quality drops when standards differ by staff member or time of day.",
+      icon: ShieldCheck,
+    },
+  ],
+  systemKicker: "CONTROL FLOW",
+  systemTitle: "Detect -> Verify -> Respond -> Record -> Report",
+  systemLead:
+    "We go beyond alerts and design an operating flow that connects guest response, internal handoff, and on-site action.",
+  layers: [
+    {
+      label: "STEP 01",
+      title: "Detect",
+      body: "Identify inquiries and abnormal situations",
+      icon: MonitorCheck,
+    },
+    {
+      label: "STEP 02",
+      title: "Verify",
+      body: "Check reservation, room, and site information",
+      icon: Database,
+    },
+    {
+      label: "STEP 03",
+      title: "Respond",
+      body: "Handle guests and notify the team",
+      icon: Headphones,
+    },
+    {
+      label: "STEP 04",
+      title: "Record",
+      body: "Save actions, results, and notes",
+      icon: ClipboardCheck,
+    },
+    {
+      label: "STEP 05",
+      title: "Report",
+      body: "Summarize repeated issues and improvements",
+      icon: LineChart,
+    },
+  ],
+  operationBlocks: [
+    {
+      label: "OPERATING STANDARD",
+      title: "Unmanned control standards",
+      body: "Define inquiry types, check-in exceptions, safety issues, facility requests, response authority, and reporting rules.",
+      icon: CheckCircle2,
+    },
+    {
+      label: "RESPONSE MANUAL",
+      title: "Response manual",
+      body: "Build situation-specific responses and escalation rules to reduce variance by time and staff.",
+      icon: MessageSquare,
+    },
+    {
+      label: "QUALITY RECORD",
+      title: "Operation records",
+      body: "Record response time, causes, actions, and follow-up items for handoff and monthly improvement.",
+      icon: ClipboardCheck,
+    },
+  ],
+  reportKicker: "CONTROL REPORTING",
+  reportTitle: "Operational records become reports",
+  reportLead:
+    "Accumulated response history reveals recurring issues and helps prioritize facility, check-in, and guest communication improvements.",
+  metrics: [
+    { title: "Response time", body: "Time from inquiry receipt to response" },
+    { title: "Resolution status", body: "Resolved, handed off, pending, or follow-up" },
+    { title: "Recurring issues", body: "Repeated room, facility, and reservation problems" },
+    { title: "Operation notes", body: "Handoff details for the next shift" },
+  ],
+  processKicker: "ONBOARDING PROCESS",
+  processTitle: "How operations begin after onboarding",
+  processLead:
+    "We review the current operating flow, set the control scope and response standards, then apply them to live operations.",
+  steps: [
+    { title: "Status diagnosis", body: "Review hours, inquiry types, and check-in flow" },
+    { title: "Standard design", body: "Define authority, scripts, and reporting rules" },
+    { title: "Control operation", body: "Monitor in real time and respond to guests" },
+    { title: "Report improvement", body: "Summarize recurring issues and action items" },
+  ],
+  ctaTitle: "Want to reduce unmanned operation gaps?",
+  ctaBody:
+    "We start by reviewing the control scope and response standards that fit your current operation.",
+  ctaLabel: "Ask about unmanned control",
+};
+
+export const otaPageContentEn: LandingContent = {
+  kicker: "OTA OPERATIONS",
+  titlePrefix: "We do not just manage channels,",
+  titleHighlight: "we operate the revenue structure",
+  titleSuffix: ".",
+  lead: "STAY-G's OTA operations service is not simple listing or setup work. We connect content, rates, inventory, reviews, messages, and settlement into one operating system that improves conversion and revenue structure together.",
+  coreLabel: "Core operating elements",
+  factors: [
+    {
+      label: "CHANNEL",
+      title: "Unified standards",
+      body: "Align channel content and sales standards into one operating base.",
+      icon: Globe2,
+    },
+    {
+      label: "RATE",
+      title: "Channel operation",
+      body: "Adjust rates, inventory, and promotions to match sales flow.",
+      icon: LineChart,
+    },
+    {
+      label: "REVENUE",
+      title: "Revenue structure",
+      body: "Manage conversion and average rate, not only channel exposure.",
+      icon: BarChart3,
+    },
+    {
+      label: "REPORT",
+      title: "Data analysis",
+      body: "Use performance metrics to recommend the next operating action.",
+      icon: Database,
+    },
+  ],
+  factorNote:
+    "Content, rates, inventory, reviews, and settlement are connected into one operating system to manage channel performance and revenue structure.",
+  quote:
+    "OTA is not just registration or setup. It is revenue operation that continuously adjusts conversion and operating standards.",
+  problemKicker: "WHY INTEGRATION FIRST",
+  problemTitle: "Why integration comes before revenue",
+  problemLead:
+    "Quality and sales become stable only when small exceptions across channels and the property are organized into operating standards.",
+  problems: [
+    {
+      label: "PROBLEM",
+      title: "Disconnected listings",
+      body: "Channels may be open, but sales flow breaks when content, rates, and inventory are managed separately.",
+      icon: Globe2,
+    },
+    {
+      label: "PROBLEM",
+      title: "No baseline",
+      body: "When room names, rate policies, and promotion standards differ by channel, performance comparison becomes difficult.",
+      icon: Flag,
+    },
+    {
+      label: "PROBLEM",
+      title: "Person-dependent work",
+      body: "When operations rely on one person's experience, reviews, messages, settlement, and inventory adjustments are easy to miss.",
+      icon: Headphones,
+    },
+  ],
+  systemKicker: "SYSTEM ARCHITECTURE",
+  systemTitle: "An operating structure connecting CMS · OTA · PMS · HiO",
+  systemLead:
+    "We connect channel sales and property operations through the flow that starts after reservation conversion.",
+  layers: [
+    { label: "LAYER 01", title: "CMS", body: "Content standard management", icon: Database },
+    { label: "LAYER 02", title: "OTA", body: "Sales channel operation", icon: Globe2 },
+    {
+      label: "LAYER 03",
+      title: "PMS",
+      body: "Reservation and room data connection",
+      icon: Flag,
+    },
+    { label: "LAYER 04", title: "HiO", body: "Guest response and operation records", icon: Home },
+  ],
+  operationBlocks: [
+    {
+      label: "INTEGRATED OPERATION",
+      title: "OTA · PMS · HiO operation",
+      body: "Manage channel sales standards and post-reservation response flow as one connected operation.",
+      icon: CheckCircle2,
+    },
+    {
+      label: "CORE TASKS",
+      title: "Core operating tasks",
+      body: "Operate channel content, rates, inventory, reviews, messages, settlement, and monthly reports as managed tasks.",
+      icon: ClipboardCheck,
+    },
+    {
+      label: "OPERATING STANDARD",
+      title: "Operating standards",
+      body: "Review performance metrics and on-site variables together, then organize the actions needed to improve revenue.",
+      icon: LineChart,
+    },
+  ],
+  reportKicker: "PERFORMANCE REPORTING",
+  reportTitle: "Operation reports in numbers",
+  reportLead:
+    "See occupancy, average daily rate, conversion rate, and review score together, then decide the next operating action.",
+  metrics: [
+    { title: "OCC", body: "Occupancy rate" },
+    { title: "ADR", body: "Average daily rate" },
+    { title: "RevPAR", body: "Revenue per available room" },
+    { title: "CVR", body: "Channel conversion rate" },
+    { title: "Score", body: "Review rating" },
+    { title: "Action", body: "Improvement action" },
+  ],
+  processKicker: "ONBOARDING PROCESS",
+  processTitle: "How operations begin after onboarding",
+  processLead:
+    "We diagnose the current channel status from the sales structure and build operating standards.",
+  steps: [
+    { title: "Status diagnosis", body: "Review channels, rates, inventory, and content" },
+    { title: "Standard setup", body: "Align room names, rate policies, and promotion rules" },
+    { title: "Open / operate", body: "Apply sales channels and handle daily operations" },
+    { title: "Monthly improvement", body: "Analyze results and propose next actions" },
+  ],
+  ctaTitle: "Do not run OTA operations alone.",
+  ctaBody: "We begin by reviewing your sales channel structure and current operating bottlenecks.",
+  ctaLabel: "Get an OTA operation diagnosis",
+};
+
 function SectionHeading({
   kicker,
   title,
@@ -402,7 +679,9 @@ function HeroSection({ content }: { content: LandingContent }) {
         </div>
 
         <div className="mt-16 border border-white/12 bg-white/[0.04] p-5 md:p-7">
-          <p className="font-semibold text-sm text-white">핵심 운영 요소</p>
+          <p className="font-semibold text-sm text-white">
+            {content.coreLabel ?? "핵심 운영 요소"}
+          </p>
           <div className="mt-5 grid gap-3 md:grid-cols-4">
             {content.factors.map((item) => (
               <article key={item.title} className="border border-white/10 bg-black px-5 py-5">
@@ -434,15 +713,21 @@ function QuoteSection({ quote }: { quote: string }) {
 }
 
 function ProblemsSection({ content }: { content: LandingContent }) {
+  const problemGridClass =
+    content.problems.length === 3 ? "mx-auto max-w-5xl lg:grid-cols-3" : "lg:grid-cols-4";
+
   return (
     <section className="bg-[#efe2cf] py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-9">
         <SectionHeading
           kicker={content.problemKicker}
           title={content.problemTitle}
-          lead="채널과 현장의 작은 예외를 운영 기준으로 정리해야 품질과 매출의 흔들림을 줄일 수 있습니다."
+          lead={
+            content.problemLead ??
+            "채널과 현장의 작은 예외를 운영 기준으로 정리해야 품질과 매출의 흔들림을 줄일 수 있습니다."
+          }
         />
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className={`mt-14 grid gap-5 md:grid-cols-2 ${problemGridClass}`}>
           {content.problems.map((item) => (
             <article key={item.title} className="bg-white p-6">
               <item.icon className="h-6 w-6 text-[#c49b5f]" strokeWidth={1.7} />
@@ -458,6 +743,11 @@ function ProblemsSection({ content }: { content: LandingContent }) {
 }
 
 function SystemSection({ content }: { content: LandingContent }) {
+  const layerGridClass =
+    content.layers.length === 4
+      ? "mx-auto max-w-5xl md:grid-cols-2 lg:grid-cols-4"
+      : "md:grid-cols-2 lg:grid-cols-5";
+
   return (
     <section className="bg-[#efe2cf] py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-9">
@@ -467,7 +757,7 @@ function SystemSection({ content }: { content: LandingContent }) {
           lead={content.systemLead}
         />
 
-        <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        <div className={`mt-14 grid gap-4 ${layerGridClass}`}>
           {content.layers.map((item) => (
             <article key={item.title} className="text-center">
               <div className="mx-auto flex h-14 w-14 items-center justify-center bg-white text-[#c49b5f]">
@@ -533,14 +823,14 @@ function ProcessSection({ content }: { content: LandingContent }) {
           title={content.processTitle}
           lead={content.processLead}
         />
-        <div className="mt-16 grid gap-8 md:grid-cols-4">
+        <div className="mx-auto mt-16 grid max-w-5xl gap-10 md:grid-cols-4 md:gap-8">
           {content.steps.map((step, index) => (
-            <article key={step.title} className="relative">
-              <div className="flex h-9 w-9 items-center justify-center bg-[#d5af6c] font-semibold text-[#241d17] text-sm">
+            <article key={step.title} className="relative text-center">
+              <div className="mx-auto flex h-9 w-9 items-center justify-center bg-[#d5af6c] font-semibold text-[#241d17] text-sm">
                 {index + 1}
               </div>
               <h3 className="mt-6 font-semibold text-[#241d17] text-lg">{step.title}</h3>
-              <p className="mt-3 text-[#75685a] text-sm leading-6">{step.body}</p>
+              <p className="mx-auto mt-3 max-w-44 text-[#75685a] text-sm leading-6">{step.body}</p>
             </article>
           ))}
         </div>
@@ -567,16 +857,25 @@ function CtaSection({ content }: { content: LandingContent }) {
   );
 }
 
-export function UnmannedOtaLandingPage({ content }: { content: LandingContent }) {
+export function UnmannedOtaLandingPage({
+  content,
+  englishContent,
+}: {
+  content: LandingContent;
+  englishContent: LandingContent;
+}) {
+  const { locale } = useLocale();
+  const activeContent = locale === "en" ? englishContent : content;
+
   return (
     <main className="w-screen max-w-full overflow-x-hidden bg-[#efe2cf] text-[#241d17]">
-      <HeroSection content={content} />
-      <QuoteSection quote={content.quote} />
-      <ProblemsSection content={content} />
-      <SystemSection content={content} />
-      <ReportSection content={content} />
-      <ProcessSection content={content} />
-      <CtaSection content={content} />
+      <HeroSection content={activeContent} />
+      <QuoteSection quote={activeContent.quote} />
+      <ProblemsSection content={activeContent} />
+      <SystemSection content={activeContent} />
+      <ReportSection content={activeContent} />
+      <ProcessSection content={activeContent} />
+      <CtaSection content={activeContent} />
     </main>
   );
 }

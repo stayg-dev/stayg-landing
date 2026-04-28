@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   UnmannedOtaLandingPage,
   unmannedPageContent,
+  unmannedPageContentEn,
 } from "@/components/unmanned-ota/landing-page";
 
 export const metadata: Metadata = {
@@ -10,5 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function UnmannedControlPage() {
-  return <UnmannedOtaLandingPage content={unmannedPageContent} />;
+  return (
+    <UnmannedOtaLandingPage content={unmannedPageContent} englishContent={unmannedPageContentEn} />
+  );
 }

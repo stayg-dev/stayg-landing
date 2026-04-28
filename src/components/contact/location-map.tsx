@@ -9,7 +9,7 @@ export default function LocationMap() {
             </h2>
             <p>
               <span className="font-light text-sm text-white lg:text-base">
-                서울특별시 금천구 가산동 319-8 에이스하이엔드타워 11층 1107호, (주)스테이지
+                서울특별시 금천구 가산동 319-8 에이스한솔타워 11층 1107호, (주)스테이지
               </span>
               <br />
               <span className="font-light text-[#8C8C8C] text-sm lg:text-base">

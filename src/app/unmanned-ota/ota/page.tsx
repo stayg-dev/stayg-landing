@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { otaPageContent, UnmannedOtaLandingPage } from "@/components/unmanned-ota/landing-page";
+import {
+  otaPageContent,
+  otaPageContentEn,
+  UnmannedOtaLandingPage,
+} from "@/components/unmanned-ota/landing-page";
 
 export const metadata: Metadata = {
   title: "OTA 운영대행 | STAY-G",
@@ -7,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function OtaOperationsPage() {
-  return <UnmannedOtaLandingPage content={otaPageContent} />;
+  return <UnmannedOtaLandingPage content={otaPageContent} englishContent={otaPageContentEn} />;
 }
