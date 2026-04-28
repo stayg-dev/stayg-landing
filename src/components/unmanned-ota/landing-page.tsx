@@ -1,5 +1,6 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowRight,
   BarChart3,
@@ -11,12 +12,23 @@ import {
   Headphones,
   Home,
   LineChart,
+  Mail,
   MessageSquare,
   MonitorCheck,
+  Phone,
   ShieldCheck,
+  X,
 } from "lucide-react";
-import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { useLocale } from "@/components/providers/locale-provider";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { PhoneInput } from "@/components/ui/phone-input";
+import { PrivacyPolicyPopup } from "@/components/ui/privacy-policy-popup";
+import { Textarea } from "@/components/ui/textarea";
+import { sendMail } from "@/lib/send-mail";
 
 type IconComponent = typeof MonitorCheck;
 
@@ -67,6 +79,7 @@ type LandingContent = {
   ctaTitle: string;
   ctaBody: string;
   ctaLabel: string;
+  inquiryService: string;
 };
 
 export const unmannedPageContent: LandingContent = {
@@ -210,6 +223,7 @@ export const unmannedPageContent: LandingContent = {
   ctaTitle: "무인 운영 공백을 줄이고 싶다면",
   ctaBody: "현재 운영 방식에 맞는 관제 범위와 응대 기준부터 함께 점검합니다.",
   ctaLabel: "무인관제 문의하기",
+  inquiryService: "무인관제",
 };
 
 export const otaPageContent: LandingContent = {
@@ -341,6 +355,7 @@ export const otaPageContent: LandingContent = {
   ctaTitle: "OTA, 더 이상 혼자 돌리지 마세요.",
   ctaBody: "현재 판매 채널의 구조와 운영 병목부터 함께 점검합니다.",
   ctaLabel: "OTA 운영 진단 받기",
+  inquiryService: "OTA 운영대행",
 };
 
 export const unmannedPageContentEn: LandingContent = {
@@ -490,6 +505,7 @@ export const unmannedPageContentEn: LandingContent = {
   ctaBody:
     "We start by reviewing the control scope and response standards that fit your current operation.",
   ctaLabel: "Ask about unmanned control",
+  inquiryService: "Unmanned Control",
 };
 
 export const otaPageContentEn: LandingContent = {
@@ -613,6 +629,7 @@ export const otaPageContentEn: LandingContent = {
   ctaTitle: "Do not run OTA operations alone.",
   ctaBody: "We begin by reviewing your sales channel structure and current operating bottlenecks.",
   ctaLabel: "Get an OTA operation diagnosis",
+  inquiryService: "OTA Operations",
 };
 
 function SectionHeading({
@@ -839,19 +856,338 @@ function ProcessSection({ content }: { content: LandingContent }) {
   );
 }
 
-function CtaSection({ content }: { content: LandingContent }) {
+type InquiryFormValues = {
+  name: string;
+  phone: string;
+  email: string;
+  message?: string;
+  agreed: boolean;
+};
+
+function getInquiryCopy(locale: "ko" | "en") {
+  if (locale === "en") {
+    return {
+      title: "Service Inquiry",
+      description: "Leave your contact details and we will review your request.",
+      phoneLabel: "Direct line",
+      mailLabel: "Recipient email",
+      nameLabel: "Full Name",
+      namePlaceholder: "Please enter your name.",
+      phoneFormLabel: "Phone Number",
+      phonePlaceholder: "010-0000-0000",
+      emailLabel: "Email Address",
+      emailPlaceholder: "Please enter your email.",
+      messageLabel: "Inquiry Details",
+      messagePlaceholder: "Please tell us what you want to discuss.",
+      agreedLabel: "I agree to the collection and use of personal information.",
+      privacyDetail:
+        "Your information will be used solely for consultation purposes and will be destroyed immediately if no contract is concluded.",
+      privacyLink: "Privacy Policy",
+      privacySuffix: "for more details.",
+      submitLabel: "Submit Inquiry",
+      submittingLabel: "Submitting...",
+      successMessage: "Your inquiry has been submitted successfully.",
+      defaultErrorMessage: "Failed to send your inquiry email.",
+      closeLabel: "Close inquiry popup",
+      nameRequired: "Please enter your name.",
+      phoneInvalid: "Please enter a valid phone number.",
+      emailRequired: "Please enter your email.",
+      emailInvalid: "Please enter a valid email address.",
+      agreedRequired: "Please agree to the collection and use of personal information.",
+    };
+  }
+
+  return {
+    title: "서비스 문의",
+    description: "연락처를 남겨주시면 담당자가 문의 내용을 확인하고 연락드립니다.",
+    phoneLabel: "상담 전화",
+    mailLabel: "수신 메일",
+    nameLabel: "성함",
+    namePlaceholder: "성함을 입력해 주세요.",
+    phoneFormLabel: "전화번호",
+    phonePlaceholder: "010-0000-0000",
+    emailLabel: "이메일",
+    emailPlaceholder: "이메일을 입력해 주세요.",
+    messageLabel: "문의 내용",
+    messagePlaceholder: "문의 내용을 입력해 주세요.",
+    agreedLabel: "개인정보 수집 및 이용에 동의합니다.",
+    privacyDetail:
+      "개인정보는 본사의 상담 용도 외 다른 목적으로 사용되지 않으며, 별도의 계약이 이루어지지 않으면 즉시 파기됩니다.",
+    privacyLink: "개인정보처리방침",
+    privacySuffix: "을 참고해 주세요.",
+    submitLabel: "문의 제출하기",
+    submittingLabel: "전송 중...",
+    successMessage: "문의가 성공적으로 전송되었습니다.",
+    defaultErrorMessage: "메일 전송에 실패했습니다.",
+    closeLabel: "문의 팝업 닫기",
+    nameRequired: "성함을 입력해 주세요.",
+    phoneInvalid: "올바른 전화번호를 입력해 주세요.",
+    emailRequired: "이메일을 입력해 주세요.",
+    emailInvalid: "올바른 이메일 형식으로 입력해 주세요.",
+    agreedRequired: "개인정보 수집 및 이용에 동의해 주세요.",
+  };
+}
+
+function InquiryPopup({
+  open,
+  onClose,
+  content,
+  locale,
+}: {
+  open: boolean;
+  onClose: () => void;
+  content: LandingContent;
+  locale: "ko" | "en";
+}) {
+  const copy = getInquiryCopy(locale);
+  const [policyOpen, setPolicyOpen] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const formSchema = useMemo(
+    () =>
+      z.object({
+        name: z.string().trim().nonempty(copy.nameRequired),
+        phone: z
+          .string()
+          .transform((val) => val.replace(/-/g, ""))
+          .refine((val) => /^0\d{7,10}$/.test(val), {
+            message: copy.phoneInvalid,
+          }),
+        email: z.string().trim().nonempty(copy.emailRequired).email(copy.emailInvalid),
+        message: z.string().trim().default(""),
+        agreed: z.boolean().refine((val) => val === true, {
+          message: copy.agreedRequired,
+        }),
+      }),
+    [copy],
+  );
+
+  const form = useForm<InquiryFormValues>({
+    resolver: zodResolver(formSchema),
+    mode: "onChange",
+    defaultValues: {
+      name: "",
+      phone: "",
+      email: "",
+      message: "",
+      agreed: false,
+    },
+  });
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  const { isDirty, isSubmitting, isValid } = form.formState;
+
+  const onSubmit = async (data: InquiryFormValues) => {
+    setSubmitStatus(null);
+    setErrorMessage("");
+
+    const details = [`[${content.inquiryService}]`, data.message ? data.message : ""]
+      .filter(Boolean)
+      .join("\n\n");
+
+    const result = await sendMail({
+      name: data.name,
+      contact: data.phone,
+      email: data.email,
+      inquiry: details,
+      mailType: "unmannedOta",
+      service: content.inquiryService,
+    });
+
+    if (result.success) {
+      setSubmitStatus("success");
+      window.umami?.track("form_submit", {
+        form: "unmanned_ota_popup",
+        service: content.inquiryService,
+      });
+      form.reset();
+    } else {
+      setSubmitStatus("error");
+      setErrorMessage(result.error || copy.defaultErrorMessage);
+    }
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 px-4 py-6"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="unmanned-ota-inquiry-title"
+    >
+      <button type="button" className="absolute inset-0 cursor-default" onClick={onClose}>
+        <span className="sr-only">{copy.closeLabel}</span>
+      </button>
+
+      <div className="relative max-h-[calc(100vh-48px)] w-full max-w-2xl overflow-y-auto bg-[#f7f1e8] p-6 text-[#241d17] md:p-8">
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute top-5 right-5 inline-flex h-9 w-9 items-center justify-center border border-[#d8c8ad] text-[#241d17] transition-colors hover:bg-white"
+          aria-label={copy.closeLabel}
+        >
+          <X className="h-5 w-5" strokeWidth={1.8} />
+        </button>
+
+        <p className="font-semibold text-[#c49b5f] text-xs tracking-[0.2em]">
+          {content.inquiryService}
+        </p>
+        <h2 id="unmanned-ota-inquiry-title" className="mt-3 font-semibold text-3xl">
+          {copy.title}
+        </h2>
+        <p className="mt-3 text-[#75685a] text-sm leading-6">{copy.description}</p>
+
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="flex items-center gap-3 border border-[#d8c8ad] bg-white px-4 py-3">
+            <Phone className="h-5 w-5 text-[#c49b5f]" strokeWidth={1.8} />
+            <div>
+              <p className="text-[#8a7b68] text-xs">{copy.phoneLabel}</p>
+              <p className="font-semibold">02-6925-7061</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 border border-[#d8c8ad] bg-white px-4 py-3">
+            <Mail className="h-5 w-5 text-[#c49b5f]" strokeWidth={1.8} />
+            <div>
+              <p className="text-[#8a7b68] text-xs">{copy.mailLabel}</p>
+              <p className="font-semibold">stayg@stayg.kr</p>
+            </div>
+          </div>
+        </div>
+
+        <form onSubmit={form.handleSubmit(onSubmit)} className="mt-7 space-y-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="popup-name" className="font-medium text-sm">
+                {copy.nameLabel}
+              </label>
+              <Input
+                id="popup-name"
+                type="text"
+                placeholder={copy.namePlaceholder}
+                {...form.register("name")}
+                aria-invalid={!!form.formState.errors.name}
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="popup-phone" className="font-medium text-sm">
+                {copy.phoneFormLabel}
+              </label>
+              <PhoneInput
+                id="popup-phone"
+                value={form.watch("phone")}
+                onChange={(value) => form.setValue("phone", value, { shouldValidate: true })}
+                placeholder={copy.phonePlaceholder}
+                aria-invalid={!!form.formState.errors.phone}
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="popup-email" className="font-medium text-sm">
+              {copy.emailLabel}
+            </label>
+            <Input
+              id="popup-email"
+              type="email"
+              placeholder={copy.emailPlaceholder}
+              {...form.register("email")}
+              aria-invalid={!!form.formState.errors.email}
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label htmlFor="popup-message" className="font-medium text-sm">
+              {copy.messageLabel}
+            </label>
+            <Textarea
+              id="popup-message"
+              placeholder={copy.messagePlaceholder}
+              {...form.register("message")}
+            />
+          </div>
+
+          <div className="space-y-3">
+            <Checkbox
+              id="popup-agreed"
+              label={copy.agreedLabel}
+              error={!!form.formState.errors.agreed}
+              {...form.register("agreed")}
+              aria-invalid={!!form.formState.errors.agreed}
+            />
+            <p className="text-[#75685a] text-xs leading-5">
+              {copy.privacyDetail}{" "}
+              <button
+                type="button"
+                className="underline underline-offset-2"
+                onClick={() => setPolicyOpen(true)}
+              >
+                {copy.privacyLink}
+              </button>
+              {copy.privacySuffix}
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            className="inline-flex min-h-12 w-full items-center justify-center gap-2 bg-[#d7b36f] px-7 font-semibold text-[#16110b] transition-colors hover:bg-[#e2c381] disabled:cursor-not-allowed disabled:opacity-50"
+            disabled={!(isDirty && isValid) || isSubmitting}
+          >
+            {isSubmitting ? copy.submittingLabel : copy.submitLabel}
+            {!isSubmitting && <ArrowRight className="h-4 w-4" strokeWidth={2} />}
+          </button>
+
+          {submitStatus === "success" && (
+            <p className="text-green-700 text-sm">{copy.successMessage}</p>
+          )}
+          {submitStatus === "error" && <p className="text-red-700 text-sm">{errorMessage}</p>}
+        </form>
+      </div>
+
+      <PrivacyPolicyPopup open={policyOpen} onClose={() => setPolicyOpen(false)} />
+    </div>
+  );
+}
+
+function CtaSection({
+  content,
+  onOpenInquiry,
+}: {
+  content: LandingContent;
+  onOpenInquiry: () => void;
+}) {
   return (
     <section className="bg-[#080b0f] py-18 text-center text-white">
       <div className="mx-auto max-w-7xl px-5 md:px-9">
         <h2 className="font-semibold text-3xl leading-tight md:text-4xl">{content.ctaTitle}</h2>
         <p className="mt-5 text-sm text-white/65 leading-7">{content.ctaBody}</p>
-        <Link
-          href="/contact"
+        <button
+          type="button"
+          onClick={onOpenInquiry}
           className="mt-8 inline-flex min-h-12 items-center gap-2 bg-[#d7b36f] px-7 font-semibold text-[#16110b] transition-colors hover:bg-[#e2c381]"
         >
           {content.ctaLabel}
           <ArrowRight className="h-4 w-4" strokeWidth={2} />
-        </Link>
+        </button>
       </div>
     </section>
   );
@@ -866,6 +1202,7 @@ export function UnmannedOtaLandingPage({
 }) {
   const { locale } = useLocale();
   const activeContent = locale === "en" ? englishContent : content;
+  const [inquiryOpen, setInquiryOpen] = useState(false);
 
   return (
     <main className="w-screen max-w-full overflow-x-hidden bg-[#efe2cf] text-[#241d17]">
@@ -875,7 +1212,13 @@ export function UnmannedOtaLandingPage({
       <SystemSection content={activeContent} />
       <ReportSection content={activeContent} />
       <ProcessSection content={activeContent} />
-      <CtaSection content={activeContent} />
+      <CtaSection content={activeContent} onOpenInquiry={() => setInquiryOpen(true)} />
+      <InquiryPopup
+        open={inquiryOpen}
+        onClose={() => setInquiryOpen(false)}
+        content={activeContent}
+        locale={locale}
+      />
     </main>
   );
 }

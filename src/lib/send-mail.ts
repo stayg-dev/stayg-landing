@@ -7,10 +7,12 @@ interface SendMailParams {
   contact: string;
   email?: string;
   inquiry?: string;
+  mailType?: "default" | "unmannedOta";
+  service?: string;
 }
 
 export const sendMail = async (params: SendMailParams) => {
-  const { name, contact, email, inquiry } = params;
+  const { name, contact, email, inquiry, mailType = "default", service } = params;
 
   try {
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
@@ -40,10 +42,13 @@ export const sendMail = async (params: SendMailParams) => {
       pad(now.getMinutes()) +
       pad(now.getSeconds());
 
+    const recipient = mailType === "unmannedOta" ? "stayg@stayg.kr" : process.env.MAIL_TO;
+    const subjectPrefix = service ? `STAY-G ${service} 문의` : "STAY-G 문의";
+
     const result = await transporter.sendMail({
       from: process.env.MAIL_FROM,
-      to: process.env.MAIL_TO,
-      subject: `STAY-G 문의[${name}] - ${formattedDate}`,
+      to: recipient,
+      subject: `${subjectPrefix}[${name}] - ${formattedDate}`,
       html: `
       <!DOCTYPE html>
       <html>
