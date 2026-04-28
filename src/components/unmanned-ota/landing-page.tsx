@@ -1061,14 +1061,14 @@ function InquiryPopup({
             <Phone className="h-5 w-5 text-[#c49b5f]" strokeWidth={1.8} />
             <div>
               <p className="text-[#8a7b68] text-xs">{copy.phoneLabel}</p>
-              <p className="font-semibold">02-6925-7061</p>
+              <p className="font-semibold">010-5172-7060</p>
             </div>
           </div>
           <div className="flex items-center gap-3 border border-[#d8c8ad] bg-white px-4 py-3">
             <Mail className="h-5 w-5 text-[#c49b5f]" strokeWidth={1.8} />
             <div>
               <p className="text-[#8a7b68] text-xs">{copy.mailLabel}</p>
-              <p className="font-semibold">stayg@stayg.kr</p>
+              <p className="font-semibold">kevin7060@naver.com</p>
             </div>
           </div>
         </div>

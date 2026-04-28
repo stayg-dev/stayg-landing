@@ -42,7 +42,7 @@ export const sendMail = async (params: SendMailParams) => {
       pad(now.getMinutes()) +
       pad(now.getSeconds());
 
-    const recipient = mailType === "unmannedOta" ? "stayg@stayg.kr" : process.env.MAIL_TO;
+    const recipient = mailType === "unmannedOta" ? "kevin7060@naver.com" : process.env.MAIL_TO;
     const subjectPrefix = service ? `STAY-G ${service} 문의` : "STAY-G 문의";
 
     const result = await transporter.sendMail({
